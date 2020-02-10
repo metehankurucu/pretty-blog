@@ -6,4 +6,17 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'My Pretty Blog' });
 });
 
+
+/* GET about page. */
+router.get('/about', function(req, res, next) {
+  res.render('about', { title: 'Hakkımda' });
+});
+
+
+
+/* GET contact page. */
+router.get('/contact', function(req, res, next) {
+  res.render('contact', { title: 'İletişim' });
+});
+
 module.exports = router;

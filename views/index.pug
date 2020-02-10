@@ -1,5 +1,230 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  // featured post
+  section
+    .container-fluid.p-sm-0
+      .row.featured-post-slider
+        .col-lg-3.col-sm-6.mb-2.mb-lg-0.px-1
+          article.card.bg-dark.text-center.text-white.border-0.rounded-0
+            img.card-img.rounded-0.img-fluid.w-100(src='images/featured-post/post-1.jpg' alt='post-thumb')
+            .card-img-overlay
+              .card-content
+                p.text-uppercase LifeStyle
+                h4.card-title.mb-4
+                  a.text-white(href='blog-single.html') Organize Your Life With 10 Simple rule
+                a.btn.btn-outline-light(href='blog-single.html') read more
+        .col-lg-3.col-sm-6.mb-2.mb-lg-0.px-1
+          article.card.bg-dark.text-center.text-white.border-0.rounded-0
+            img.card-img.rounded-0.img-fluid.w-100(src='images/featured-post/post-2.jpg' alt='post-thumb')
+            .card-img-overlay
+              .card-content
+                p.text-uppercase Philosophy
+                h4.card-title.mb-4
+                  a.text-white(href='blog-single.html')
+                    | Organize Your Life With 10
+                    | Simple rule
+                a.btn.btn-outline-light(href='blog-single.html') read more
+        .col-lg-3.col-sm-6.mb-2.mb-lg-0.px-1
+          article.card.bg-dark.text-center.text-white.border-0.rounded-0
+            img.card-img.rounded-0.img-fluid.w-100(src='images/featured-post/post-3.jpg' alt='post-thumb')
+            .card-img-overlay
+              .card-content
+                p.text-uppercase Fashion
+                h4.card-title.mb-4
+                  a.text-white(href='blog-single.html')
+                    | Organize Your Life With 10
+                    | Simple rule
+                a.btn.btn-outline-light(href='blog-single.html') read more
+        .col-lg-3.col-sm-6.mb-2.mb-lg-0.px-1
+          article.card.bg-dark.text-center.text-white.border-0.rounded-0
+            img.card-img.rounded-0.img-fluid.w-100(src='images/featured-post/post-4.jpg' alt='post-thumb')
+            .card-img-overlay
+              .card-content
+                p.text-uppercase Article
+                h4.card-title.mb-4
+                  a.text-white(href='blog-single.html')
+                    | Organize Your Life With 10
+                    | Simple rule
+                a.btn.btn-outline-light(href='blog-single.html') read more
+        .col-lg-3.col-sm-6.mb-2.mb-lg-0.px-1
+          article.card.bg-dark.text-center.text-white.border-0.rounded-0
+            img.card-img.rounded-0.img-fluid.w-100(src='images/featured-post/post-5.jpg' alt='post-thumb')
+            .card-img-overlay
+              .card-content
+                p.text-uppercase Nature
+                h4.card-title.mb-4
+                  a.text-white(href='blog-single.html')
+                    | Organize Your Life With 10
+                    | Simple rule
+                a.btn.btn-outline-light(href='blog-single.html') read more
+  // /featured post
+  // blog post
+  section.section
+    .container
+      .row.masonry-container
+        .col-lg-4.col-sm-6.mb-5
+          article.text-center
+            img.img-fluid.mb-4(src='images/masonary-post/post-1.jpg' alt='post-thumb')
+            p.text-uppercase.mb-2 TRAVEL
+            h4.title-border
+              a.text-dark(href='blog-single.html') Charming Evening Field
+            p
+              | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+              | dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+              | ea commodo consequat.
+            a.btn.btn-transparent(href='blog-single.html') read more
+        .col-lg-4.col-sm-6.mb-5
+          article.text-center
+            img.img-fluid.mb-4(src='images/masonary-post/post-2.jpg' alt='post-thumb')
+            p.text-uppercase.mb-2 TRAVEL
+            h4.title-border
+              a.text-dark(href='blog-single.html') Charming Evening Field
+            p
+              | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+              | dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+              | ea commodo consequat.
+            a.btn.btn-transparent(href='blog-single.html') read more
+        .col-lg-4.col-sm-6.mb-5
+          article.text-center
+            img.img-fluid.mb-4(src='images/masonary-post/post-3.jpg' alt='post-thumb')
+            p.text-uppercase.mb-2 TRAVEL
+            h4.title-border
+              a.text-dark(href='blog-single.html') Charming Evening Field
+            p
+              | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+              | dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+              | ea commodo consequat.
+            a.btn.btn-transparent(href='blog-single.html') read more
+        .col-lg-4.col-sm-6.mb-5
+          article.text-center
+            img.img-fluid.mb-4(src='images/masonary-post/post-4.jpg' alt='post-thumb')
+            p.text-uppercase.mb-2 TRAVEL
+            h4.title-border
+              a.text-dark(href='blog-single.html') Charming Evening Field
+            p
+              | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+              | dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+              | ea commodo consequat.
+            a.btn.btn-transparent(href='blog-single.html') read more
+        .col-lg-4.col-sm-6.mb-5
+          article.text-center
+            img.img-fluid.mb-4(src='images/masonary-post/post-5.jpg' alt='post-thumb')
+            p.text-uppercase.mb-2 TRAVEL
+            h4.title-border
+              a.text-dark(href='blog-single.html') Charming Evening Field
+            p
+              | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+              | dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+              | ea commodo consequat.
+            a.btn.btn-transparent(href='blog-single.html') read more
+        .col-lg-4.col-sm-6.mb-5
+          article.text-center
+            img.img-fluid.mb-4(src='images/masonary-post/post-6.jpg' alt='post-thumb')
+            p.text-uppercase.mb-2 TRAVEL
+            h4.title-border
+              a.text-dark(href='blog-single.html') Charming Evening Field
+            p
+              | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+              | dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+              | ea commodo consequat.
+            a.btn.btn-transparent(href='blog-single.html') read more
+        .col-lg-4.col-sm-6.mb-5
+          article.text-center
+            img.img-fluid.mb-4(src='images/masonary-post/post-7.jpg' alt='post-thumb')
+            p.text-uppercase.mb-2 TRAVEL
+            h4.title-border
+              a.text-dark(href='blog-single.html') Charming Evening Field
+            p
+              | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+              | dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+              | ea commodo consequat.
+            a.btn.btn-transparent(href='blog-single.html') read more
+        .col-lg-4.col-sm-6.mb-5
+          article.text-center
+            img.img-fluid.mb-4(src='images/masonary-post/post-8.jpg' alt='post-thumb')
+            p.text-uppercase.mb-2 TRAVEL
+            h4.title-border
+              a.text-dark(href='blog-single.html') Charming Evening Field
+            p
+              | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+              | dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+              | ea commodo consequat.
+            a.btn.btn-transparent(href='blog-single.html') read more
+        .col-lg-4.col-sm-6.mb-5
+          article.text-center
+            img.img-fluid.mb-4(src='images/masonary-post/post-9.jpg' alt='post-thumb')
+            p.text-uppercase.mb-2 TRAVEL
+            h4.title-border
+              a.text-dark(href='blog-single.html') Charming Evening Field
+            p
+              | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+              | dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+              | ea commodo consequat.
+            a.btn.btn-transparent(href='blog-single.html') read more
+        .col-lg-4.col-sm-6.mb-5
+          article.text-center
+            img.img-fluid.mb-4(src='images/masonary-post/post-10.jpg' alt='post-thumb')
+            p.text-uppercase.mb-2 TRAVEL
+            h4.title-border
+              a.text-dark(href='blog-single.html') Charming Evening Field
+            p
+              | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+              | dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+              | ea commodo consequat.
+            a.btn.btn-transparent(href='blog-single.html') read more
+        .col-lg-4.col-sm-6.mb-5
+          article.text-center
+            img.img-fluid.mb-4(src='images/masonary-post/post-11.jpg' alt='post-thumb')
+            p.text-uppercase.mb-2 TRAVEL
+            h4.title-border
+              a.text-dark(href='blog-single.html') Charming Evening Field
+            p
+              | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+              | dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+              | ea commodo consequat.
+            a.btn.btn-transparent(href='blog-single.html') read more
+        .col-lg-4.col-sm-6.mb-5
+          article.text-center
+            img.img-fluid.mb-4(src='images/masonary-post/post-13.jpg' alt='post-thumb')
+            p.text-uppercase.mb-2 TRAVEL
+            h4.title-border
+              a.text-dark(href='blog-single.html') Charming Evening Field
+            p
+              | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+              | dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+              | ea commodo consequat.
+            a.btn.btn-transparent(href='blog-single.html') read more
+        .col-lg-4.col-sm-6.mb-5
+          article.text-center
+            img.img-fluid.mb-4(src='images/masonary-post/post-12.jpg' alt='post-thumb')
+            p.text-uppercase.mb-2 TRAVEL
+            h4.title-border
+              a.text-dark(href='blog-single.html') Charming Evening Field
+            p
+              | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+              | dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+              | ea commodo consequat.
+            a.btn.btn-transparent(href='blog-single.html') read more
+      .row
+        .col-12
+          nav
+            ul.pagination.justify-content-center.align-items-center
+              li.page-item
+                span.page-link &laquo; Previous
+              li.page-item
+                a.page-link(href='#') 01
+              li.page-item.active
+                span.page-link 02
+              li.page-item
+                a.page-link(href='#') 03
+              li.page-item
+                a.page-link(href='#') 04
+              li.page-item
+                a.page-link(href='#') 05
+              li.page-item
+                a.page-link(href='#') 06
+              li.page-item
+                a.page-link(href='#') Next &raquo;
+  // /blog post
+
