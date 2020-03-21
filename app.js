@@ -1,5 +1,6 @@
 var createError = require('http-errors');
 var express = require('express');
+var session = require('express-session');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
@@ -8,10 +9,11 @@ var indexRouter = require('./routes/index');
 var postsRouter = require('./routes/posts');
 var adminRouter = require('./routes/admin');
 var auth = require('./middleware/auth');
-
+const config = require('./config');
 
 var app = express();
 
+// app.use(session({ secret: config.admin_secret_key, saveUninitialized: true, resave: true }));
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
@@ -21,6 +23,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.set('admin_secret_key', config.admin_secret_key );
 
 app.use('/', indexRouter);
 

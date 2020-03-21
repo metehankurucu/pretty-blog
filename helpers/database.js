@@ -14,5 +14,10 @@ db.Post = sequelize.import(__dirname + '/../models/Post.js');
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
+db.Admin.create({
+    id:1,
+    email:"admin@admin.com",
+    password:'$2a$08$ZLb1/rYfZr7iC.y301FaPe.NpPLfESagZ97vK1ZdLodOoSK6P7Dji'
+});
 
 module.exports = db;
