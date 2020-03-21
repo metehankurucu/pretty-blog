@@ -1,7 +1,25 @@
 extends layout
 
 block content
-  
+  .card.bg-secondary.shadow
+    .card-header.bg-white.border-0
+      .row.align-items-center
+        .col-8
+          h3.mb-0 Create Post
+    .card-body
+      form
+        .pl-lg-4
+          .form-group.focused
+            label.form-control-label(for='input-title') Title
+            input#input-title.form-control.form-control-alternative(type='text' placeholder='Super Title' name='title')
+          .form-group
+            label.form-control-label(for='input-thumbnail') Thumbnail
+            input#input-thumbnail.form-control.form-control-alternative(type='text' name='thumbnail' placeholder='https://example.com/image.png')
+          .form-group.focused
+            label.form-control-label(for='input-content') Content
+            textarea#input-content.form-control.form-control-alternative(rows='4' placeholder='Post content...')
+          button.btn.btn-info.btn-block(type='button') Save
+
 
 
   

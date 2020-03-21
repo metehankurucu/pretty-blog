@@ -15,7 +15,7 @@ module.exports = (req, res, next) => {
             res.redirect('/admin');
         }
     }else{
-        if(req.url === '/login'){
+        if(req.url === '/login' || req.url === '/forgot-password'){
             next();
         }else{
             res.redirect('/admin/login');

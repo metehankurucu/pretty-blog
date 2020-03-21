@@ -9,6 +9,12 @@ router.get('/login', function(req, res, next) {
   res.render('admin/login', {  });
 });
 
+
+/** Forgot Password Page */
+router.get('/forgot-password', function(req, res, next) {
+  res.render('admin/forgot-password', {});
+});
+
 /** Login Post */
 router.post('/login', async (req, res, next) => {
   try {
