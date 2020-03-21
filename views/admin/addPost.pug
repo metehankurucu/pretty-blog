@@ -6,8 +6,9 @@ block content
       .row.align-items-center
         .col-8
           h3.mb-0 Create Post
+    //- p !{content}
     .card-body
-      form
+      form(role='form' action='/admin/add-post' method='post')
         .pl-lg-4
           .form-group.focused
             label.form-control-label(for='input-title') Title
@@ -17,9 +18,14 @@ block content
             input#input-thumbnail.form-control.form-control-alternative(type='text' name='thumbnail' placeholder='https://example.com/image.png')
           .form-group.focused
             label.form-control-label(for='input-content') Content
-            textarea#input-content.form-control.form-control-alternative(rows='4' placeholder='Post content...')
-          button.btn.btn-info.btn-block(type='button') Save
+            textarea#input-content.form-control.form-control-alternative(rows='4' name='content' placeholder='Post content...')
+          button.btn.btn-info.btn-block(type='submit') Save
 
+
+block javascripts
+  script(src='https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js')
+  script.
+    CKEDITOR.replace( 'input-content' );
 
 
   

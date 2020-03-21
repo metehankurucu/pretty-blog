@@ -1,6 +1,115 @@
 extends layout
 
+block header
+  .row
+    .col-xl-3.col-lg-6
+      .card.card-stats.mb-4.mb-xl-0
+        .card-body
+          .row
+            .col
+              h5.card-title.text-uppercase.text-muted.mb-0 Traffic
+              span.h2.font-weight-bold.mb-0 350,897
+            .col-auto
+              .icon.icon-shape.bg-danger.text-white.rounded-circle.shadow
+                i.fas.fa-chart-bar
+          p.mt-3.mb-0.text-muted.text-sm
+            span.text-success.mr-2
+              i.fa.fa-arrow-up
+              |  3.48%
+            span.text-nowrap Since last month
+    .col-xl-3.col-lg-6
+      .card.card-stats.mb-4.mb-xl-0
+        .card-body
+          .row
+            .col
+              h5.card-title.text-uppercase.text-muted.mb-0 New users
+              span.h2.font-weight-bold.mb-0 2,356
+            .col-auto
+              .icon.icon-shape.bg-warning.text-white.rounded-circle.shadow
+                i.fas.fa-chart-pie
+          p.mt-3.mb-0.text-muted.text-sm
+            span.text-danger.mr-2
+              i.fas.fa-arrow-down
+              |  3.48%
+            span.text-nowrap Since last week
+    .col-xl-3.col-lg-6
+      .card.card-stats.mb-4.mb-xl-0
+        .card-body
+          .row
+            .col
+              h5.card-title.text-uppercase.text-muted.mb-0 Sales
+              span.h2.font-weight-bold.mb-0 924
+            .col-auto
+              .icon.icon-shape.bg-yellow.text-white.rounded-circle.shadow
+                i.fas.fa-users
+          p.mt-3.mb-0.text-muted.text-sm
+            span.text-warning.mr-2
+              i.fas.fa-arrow-down
+              |  1.10%
+            span.text-nowrap Since yesterday
+    .col-xl-3.col-lg-6
+      .card.card-stats.mb-4.mb-xl-0
+        .card-body
+          .row
+            .col
+              h5.card-title.text-uppercase.text-muted.mb-0 Performance
+              span.h2.font-weight-bold.mb-0 49,65%
+            .col-auto
+              .icon.icon-shape.bg-info.text-white.rounded-circle.shadow
+                i.fas.fa-percent
+          p.mt-3.mb-0.text-muted.text-sm
+            span.text-success.mr-2
+              i.fas.fa-arrow-up
+              |  12%
+            span.text-nowrap Since last month
+
+
 block content
+  .row
+    .col-xl-8.mb-5.mb-xl-0
+      .card.bg-gradient-default.shadow
+        .card-header.bg-transparent
+          .row.align-items-center
+            .col
+              h6.text-uppercase.text-light.ls-1.mb-1 Overview
+              h2.text-white.mb-0 Sales value
+            .col
+              ul.nav.nav-pills.justify-content-end
+                li.nav-item.mr-2.mr-md-0(data-toggle='chart' data-target='#chart-sales' data-update='{"data":{"datasets":[{"data":[0, 20, 10, 30, 15, 40, 20, 60, 60]}]}}' data-prefix='$' data-suffix='k')
+                  a.nav-link.py-2.px-3.active(href='#' data-toggle='tab')
+                    span.d-none.d-md-block Month
+                    span.d-md-none M
+                li.nav-item(data-toggle='chart' data-target='#chart-sales' data-update='{"data":{"datasets":[{"data":[0, 20, 5, 25, 10, 30, 15, 40, 40]}]}}' data-prefix='$' data-suffix='k')
+                  a.nav-link.py-2.px-3(href='#' data-toggle='tab')
+                    span.d-none.d-md-block Week
+                    span.d-md-none W
+        .card-body
+          // Chart
+          .chart
+            .chartjs-size-monitor
+              .chartjs-size-monitor-expand
+                div
+              .chartjs-size-monitor-shrink
+                div
+            // Chart wrapper
+            canvas#chart-sales.chart-canvas.chartjs-render-monitor(width='641' height='350' style='display: block; width: 641px; height: 350px;')
+    .col-xl-4
+      .card.shadow
+        .card-header.bg-transparent
+          .row.align-items-center
+            .col
+              h6.text-uppercase.text-muted.ls-1.mb-1 Performance
+              h2.mb-0 Total orders
+        .card-body
+          // Chart
+          .chart
+            .chartjs-size-monitor
+              .chartjs-size-monitor-expand
+                div
+              .chartjs-size-monitor-shrink
+                div
+            canvas#chart-orders.chart-canvas.chartjs-render-monitor(width='641' height='350' style='display: block; width: 641px; height: 350px;')
+
   
 
 

@@ -23,6 +23,7 @@ head
   link(href='./assets/js/plugins/@fortawesome/fontawesome-free/css/all.min.css' rel='stylesheet')
   // CSS Files
   link(href='./assets/css/argon-dashboard.css?v=1.1.2' rel='stylesheet')
+  block styles
 nav#sidenav-main.navbar.navbar-vertical.fixed-left.navbar-expand-md.navbar-light.bg-white
   .container-fluid
     // Toggler
@@ -123,8 +124,7 @@ nav#sidenav-main.navbar.navbar-vertical.fixed-left.navbar-expand-md.navbar-light
   .header.bg-gradient-primary.pb-8.pt-5.pt-md-8
     .container-fluid
       .header-body
-        // Card stats
-        .row
+        block header
   .container-fluid.mt--7
     block content
    

@@ -1,116 +1,75 @@
 doctype html
-html(lang='en')
-  head
-    meta(charset='utf-8')
-    title My Pretty Blog
-    // mobile responsive meta
-    meta(name='viewport', content='width=device-width, initial-scale=1')
-    meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1')
-    // ** /Plugins Needed for the Project **
-    // Bootstrap
-    link(rel='stylesheet', href='/plugins/bootstrap/bootstrap.min.css')
-    // slick slider
-    link(rel='stylesheet', href='/plugins/slick/slick.css')
-    // themefy-icon
-    link(rel='stylesheet', href='/plugins/themify-icons/themify-icons.css')
-    // Main Stylesheet
-    link(href='/stylesheets/parsa-style.css', rel='stylesheet')
-    // Favicon
-    link(rel='shortcut icon', href='/images/favicon.ico', type='image/x-icon')
-    link(rel='icon', href='/images/favicon.ico', type='image/x-icon')
-  body
-    // preloader
-    .preloader
-      .loader
-        span.dot
-        .dots
-          span
-          span
-          span
-    // /preloader
-    header.navigation
-      nav.navbar.navbar-expand-lg.navbar-light
-        a.navbar-brand(href='/')
-          img.img-fluid(src='/images/logo.png', alt='parsa')
-        button.navbar-toggler.border-0(type='button', data-toggle='collapse', data-target='#navogation', aria-controls='navogation', aria-expanded='false', aria-label='Toggle navigation')
-          span.navbar-toggler-icon
-        #navogation.collapse.navbar-collapse.text-center
-          ul.navbar-nav.ml-auto
-            li.nav-item
-              a.nav-link.text-dark(href='/') Anasayfa
-            li.nav-item
-              a.nav-link.text-dark(href='/about') Hakkımda
-            //li.nav-item
-              a.nav-link.text-uppercase.text-dark(href='/blog') Blog
-            li.nav-item
-              a.nav-link.text-dark(href='/contact') İletişim
-          form.form-inline.position-relative.ml-lg-4
-            input.form-control.px-0.w-100(type='search', placeholder='Search')
-            // <button class="search-icon" type="submit"><i class="ti-search text-dark"></i></button>
-            a.search-icon(href='/search')
-              i.ti-search.text-dark
+head
+  meta(charset='utf-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no')
+  meta(name='description' content='')
+  meta(name='author' content='')
+  link(rel='icon' href='images/favicon.ico')
+  title Pretty Blog
+  // Bootstrap core CSS
+  link(href='stylesheets/bootstrap.min.css' rel='stylesheet')
+  // Fonts
+  link(href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet')
+  link(href='https://fonts.googleapis.com/css?family=Righteous' rel='stylesheet')
+  // Custom styles for this template
+  link(href='stylesheets/mediumish.css' rel='stylesheet')
+//
+  Begin Nav
+  ==================================================
+nav.navbar.navbar-toggleable-md.navbar-light.bg-white.fixed-top.mediumnavigation
+  button.navbar-toggler.navbar-toggler-right(type='button' data-toggle='collapse' data-target='#navbarsExampleDefault' aria-controls='navbarsExampleDefault' aria-expanded='false' aria-label='Toggle navigation')
+    span.navbar-toggler-icon
+  .container
+    // Begin Logo
+    a.navbar-brand(href='index.html')
+      img(src='images/logo.png' alt='logo')
+    // End Logo
+    #navbarsExampleDefault.collapse.navbar-collapse
+      // Begin Menu
+      ul.navbar-nav.ml-auto
+        li.nav-item.active
+          a.nav-link(href='index.html')
+            | Stories 
+            span.sr-only (current)
+        li.nav-item
+          a.nav-link(href='post.html') Post
+        li.nav-item
+          a.nav-link(href='author.html') Author
+      // End Menu
+      // Begin Search
+      form.form-inline.my-2.my-lg-0
+        input.form-control.mr-sm-2(type='text' placeholder='Search')
+        span.search-icon
+          svg.svgIcon-use(width='25' height='25' viewbox='0 0 25 25')
+            path(d='M20.067 18.933l-4.157-4.157a6 6 0 1 0-.884.884l4.157 4.157a.624.624 0 1 0 .884-.884zM6.5 11c0-2.62 2.13-4.75 4.75-4.75S16 8.38 16 11s-2.13 4.75-4.75 4.75S6.5 13.62 6.5 11z')
+      // End Search
+//
+  End Nav
+  ==================================================
+//
+  Begin Site Title
+  ==================================================
+.container
+  .mainheading
+    h1.sitetitle Mediumish
+    p.lead
+      | Bootstrap theme, medium style, simply perfect for bloggers
+  
     block content
 
-    // instagram
-    //section
-    //  .container-fluid.px-0
-    //    #instafeed.row.no-gutters.instagram-slider(data-userid='4044026246', data-accesstoken='4044026246.1677ed0.8896752506ed4402a0519d23b8f50a17')
-    // /instagram
-    footer.bg-secondary
-      .section
-        .container
-          .row
-            .col-md-3.col-sm-6.mb-4.mb-md-0
-              a(href='/')
-                img.img-fluid(src='/images/logo.png', alt='persa')
-            .col-md-3.col-sm-6.mb-4.mb-md-0
-              h6 Address
-              ul.list-unstyled
-                li.font-secondary.text-dark Sydney
-                li.font-secondary.text-dark 6 rip carl Avenue CA 90733
-            .col-md-3.col-sm-6.mb-4.mb-md-0
-              h6 Contact Info
-              ul.list-unstyled
-                li.font-secondary.text-dark Tel: +90 000 333 22
-                li.font-secondary.text-dark Mail: exmaple@ymail.com
-            .col-md-3.col-sm-6.mb-4.mb-md-0
-              h6 Follow
-              ul.list-inline.d-inline-block
-                li.list-inline-item
-                  a.text-dark(href='#')
-                    i.ti-facebook
-                li.list-inline-item
-                  a.text-dark(href='#')
-                    i.ti-twitter-alt
-                li.list-inline-item
-                  a.text-dark(href='#')
-                    i.ti-linkedin
-                li.list-inline-item
-                  a.text-dark(href='#')
-                    i.ti-github
-      .text-center.pb-3
-        p.mb-0
-          | Copyright ©
-          script.
-            var CurrentYear = new Date().getFullYear()
-            document.write(CurrentYear)
-          |  a theme by  
-          a(href='https://themefisher.com/') themefisher.com
-    // jQuery
-    script(src='/plugins/jQuery/jquery.min.js')
-    // Bootstrap JS
-    script(src='/plugins/bootstrap/bootstrap.min.js')
-    // slick slider
-    script(src='/plugins/slick/slick.min.js')
-    // masonry
-    script(src='/plugins/masonry/masonry.js')
-    // instafeed
-    script(src='/plugins/instafeed/instafeed.min.js')
-    // smooth scroll
-    script(src='/plugins/smooth-scroll/smooth-scroll.js')
-    // headroom
-    script(src='/plugins/headroom/headroom.js')
-    // reading time
-    script(src='/plugins/reading-time/readingTime.min.js')
-    // Main Script
-    script(src='/javascripts/script.js')
+  .footer
+    p.pull-left
+      | Copyright &copy; 2020 Pretty Blog
+    .clearfix
+  //
+    End Footer
+    ==================================================
+// /.container
+//
+  Bootstrap core JavaScript
+  ==================================================
+// Placed at the end of the document so the pages load faster
+script(src='javascripts/jquery.min.js')
+script(src='https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js' integrity='sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb' crossorigin='anonymous')
+script(src='javascripts/bootstrap.min.js')
+script(src='javascripts/ie10-viewport-bug-workaround.js')

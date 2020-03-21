@@ -2,7 +2,8 @@ var express = require('express');
 var router = express.Router();
 var bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const { Admin } =  require('../helpers/database');
+const { Admin, Post } =  require('../helpers/database');
+
 
 /** Login Page */
 router.get('/login', function(req, res, next) {
@@ -37,7 +38,7 @@ router.post('/login', async (req, res, next) => {
         );
         //SET COOKIE
         res.cookie('adminToken', adminToken, {
-          expires: new Date(Date.now() + 5 * 100000)
+          expires: new Date(Date.now() + 5 * 10000000)
         });
         res.redirect('/admin/');
       }else{
@@ -64,11 +65,30 @@ router.get('/',async function(req, res, next) {
 });
 
 
-/** Add Post */
+/** Create Post - Get Method */
 router.get('/add-post', function(req, res, next) {
   res.render('admin/addPost', {  });
 
 });
+
+
+/** Create Post - Post Method */
+router.post('/add-post',async (req, res, next) => {
+  try {
+    
+    const { title, thumbnail, content } = req.body;
+
+    const result = await Post.create({ title, thumbnail, content });
+
+    console.log(result);
+
+  } catch (error) {
+    console.log('Error on add-post[post]')
+  }
+
+  res.render('admin/addPost');
+});
+
 
 /** Posts */
 router.get('/posts', function(req, res, next) {
