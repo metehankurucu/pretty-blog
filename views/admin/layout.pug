@@ -15,14 +15,14 @@ head
   title
     | Pretty Blog Dashboard
   // Favicon
-  link(href='./assets/img/brand/favicon.png' rel='icon' type='image/png')
+  link(href='/admin/assets/img/brand/favicon.png' rel='icon' type='image/png')
   // Fonts
   link(href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet')
   // Icons
-  link(href='./assets/js/plugins/nucleo/css/nucleo.css' rel='stylesheet')
-  link(href='./assets/js/plugins/@fortawesome/fontawesome-free/css/all.min.css' rel='stylesheet')
+  link(href='/admin/assets/js/plugins/nucleo/css/nucleo.css' rel='stylesheet')
+  link(href='/admin/assets/js/plugins/@fortawesome/fontawesome-free/css/all.min.css' rel='stylesheet')
   // CSS Files
-  link(href='./assets/css/argon-dashboard.css?v=1.1.2' rel='stylesheet')
+  link(href='/admin/assets/css/argon-dashboard.css?v=1.1.2' rel='stylesheet')
   block styles
 nav#sidenav-main.navbar.navbar-vertical.fixed-left.navbar-expand-md.navbar-light.bg-white
   .container-fluid
@@ -30,8 +30,8 @@ nav#sidenav-main.navbar.navbar-vertical.fixed-left.navbar-expand-md.navbar-light
     button.navbar-toggler(type='button' data-toggle='collapse' data-target='#sidenav-collapse-main' aria-controls='sidenav-main' aria-expanded='false' aria-label='Toggle navigation')
       span.navbar-toggler-icon
     // Brand
-    a.navbar-brand.pt-0(href='./index.html')
-      img.navbar-brand-img(src='./assets/img/brand/blue.png' alt='...')
+    a.navbar-brand.pt-0(href='/admin')
+      img.navbar-brand-img(src='/admin/assets/img/brand/blue.png' alt='...')
     // User
     ul.nav.align-items-center.d-md-none
       li.nav-item.dropdown
@@ -46,7 +46,7 @@ nav#sidenav-main.navbar.navbar-vertical.fixed-left.navbar-expand-md.navbar-light
         a.nav-link(href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
           .media.align-items-center
             span.avatar.avatar-sm.rounded-circle
-              img(alt='Image placeholder' src='./assets/img/theme/team-1-800x800.jpg\
+              img(alt='Image placeholder' src='/admin/assets/img/theme/team-1-800x800.jpg\
               ')
         .dropdown-menu.dropdown-menu-arrow.dropdown-menu-right
           .dropdown-header.noti-title
@@ -60,8 +60,8 @@ nav#sidenav-main.navbar.navbar-vertical.fixed-left.navbar-expand-md.navbar-light
       .navbar-collapse-header.d-md-none
         .row
           .col-6.collapse-brand
-            a(href='./index.html')
-              img(src='./assets/img/brand/blue.png')
+            a(href='/admin/index.html')
+              img(src='/admin/assets/img/brand/blue.png')
           .col-6.collapse-close
             button.navbar-toggler(type='button' data-toggle='collapse' data-target='#sidenav-collapse-main' aria-controls='sidenav-main' aria-expanded='false' aria-label='Toggle sidenav')
               span
@@ -76,26 +76,27 @@ nav#sidenav-main.navbar.navbar-vertical.fixed-left.navbar-expand-md.navbar-light
       // Navigation
       ul.navbar-nav
         li.nav-item.active
-          a.nav-link.active(href='./')
+          a.nav-link.active(href='/admin')
             i.ni.ni-tv-2.text-primary
             |  Dashboard
-        li.nav-item
-          a.nav-link(href='./add-post')
+        li.nav-item.active
+          a.nav-link.active(href='/admin/add-post')
             i.ni.ni-fat-add.text-blue
             |  Create Post
-        li.nav-item
-          a.nav-link(href='./posts')
+        li.nav-item.active
+          a.nav-link.active(href='/admin/posts')
             i.ni.ni-collection.text-blue
             |  Posts
-        
-      // Divider
-      hr.my-3
+        li.nav-item.active
+          a.nav-link.active(href='/admin/upload-photo')
+            i.ni.ni-cloud-upload-96.text-blue
+            |  Upload Photo
 .main-content
   // Navbar
   nav#navbar-main.navbar.navbar-top.navbar-expand-md.navbar-dark
     .container-fluid
       // Brand
-      a.h4.mb-0.text-white.text-uppercase.d-none.d-lg-inline-block(href='./index.html') Dashboard
+      a.h4.mb-0.text-white.text-uppercase.d-none.d-lg-inline-block(href='/admin') Dashboard
       // Form
       form.navbar-search.navbar-search-dark.form-inline.mr-3.d-none.d-md-flex.ml-lg-auto
         .form-group.mb-0
@@ -110,13 +111,13 @@ nav#sidenav-main.navbar.navbar-vertical.fixed-left.navbar-expand-md.navbar-light
           a.nav-link.pr-0(href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
             .media.align-items-center
               span.avatar.avatar-sm.rounded-circle
-                img(alt='Image placeholder' src='./assets/img/theme/team-4-800x800.jpg')
+                img(alt='Image placeholder' src='/admin/assets/img/theme/team-4-800x800.jpg')
               .media-body.ml-2.d-none.d-lg-block
                 span.mb-0.text-sm.font-weight-bold Jessica Jones
           .dropdown-menu.dropdown-menu-arrow.dropdown-menu-right
             .dropdown-header.noti-title
               h6.text-overflow.m-0 Welcome!
-            a.dropdown-item(href='./logout')
+            a.dropdown-item(href='/admin/logout')
               i.ni.ni-user-run
               span Logout
   // End Navbar
@@ -127,10 +128,6 @@ nav#sidenav-main.navbar.navbar-vertical.fixed-left.navbar-expand-md.navbar-light
         block header
   .container-fluid.mt--7
     block content
-   
-
-
-
 
    
     // Footer
@@ -141,11 +138,11 @@ nav#sidenav-main.navbar.navbar-vertical.fixed-left.navbar-expand-md.navbar-light
             | &copy; 2020 My Pretty Blog
         .col-xl-6
 // Core
-script(src='./assets/js/plugins/jquery/dist/jquery.min.js')
-script(src='./assets/js/plugins/bootstrap/dist/js/bootstrap.bundle.min.js')
+script(src='/admin/assets/js/plugins/jquery/dist/jquery.min.js')
+script(src='/admin/assets/js/plugins/bootstrap/dist/js/bootstrap.bundle.min.js')
 // Optional JS
-script(src='./assets/js/plugins/chart.js/dist/Chart.min.js')
-script(src='./assets/js/plugins/chart.js/dist/Chart.extension.js')
+script(src='/admin/assets/js/plugins/chart.js/dist/Chart.min.js')
+script(src='/admin/assets/js/plugins/chart.js/dist/Chart.extension.js')
 // Argon JS
-script(src='./assets/js/argon-dashboard.min.js?v=1.1.2')
+script(src='/admin/assets/js/argon-dashboard.min.js?v=1.1.2')
 block javascripts

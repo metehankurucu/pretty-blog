@@ -72,28 +72,101 @@ router.get('/add-post', function(req, res, next) {
 });
 
 
+/** Post Page */
+router.get('/post/:id', async (req, res, next) => {
+  const postId = req.params.id;
+  try {
+    const post = await Post.findOne({ where:{ id: postId} });
+    res.render('admin/post', { post });
+  } catch (error) {
+    console.log(error);
+    res.render('admin/post', {  });
+  }
+});
+
+
+/** Post Update */
+router.post('/post/:id', async (req, res, next) => {
+  const postId = req.params.id;
+  try {
+    const { title, thumbnail, content } = req.body;
+    const result = await Post.update({ title, thumbnail, content },{ where:{ id: postId }});
+      
+    const post = await Post.findOne({ where:{ id: postId } });
+    res.render('admin/post', { post });
+  } catch (error) {
+    console.log(error);
+    res.render('admin/post', {  });
+  }
+});
+
+/** Hide Post */
+router.get('/post/hide/:id', async (req, res, next) => {
+  const postId = req.params.id;
+  try {
+    const result = await Post.update({ status:0 },{ where:{ id: postId }});
+    res.redirect('/admin/post/' + postId);
+  } catch (error) {
+    console.log(error);
+    res.redirect('/admin/post/' + postId);
+  }
+});
+
+/** Make Visible Post */
+router.get('/post/make-visible/:id', async (req, res, next) => {
+  const postId = req.params.id;
+  try {
+    const result = await Post.update({ status:1 },{ where:{ id: postId }});
+    res.redirect('/admin/post/' + postId);
+  } catch (error) {
+    console.log(error);
+    res.redirect('/admin/post/' + postId);
+  }
+});
+
+/** Delete Post */
+router.get('/post/delete/:id', async (req, res, next) => {
+  const postId = req.params.id;
+  try {
+    const result = await Post.destroy({ where:{ id: postId }});
+    res.redirect('/admin/posts');
+  } catch (error) {
+    console.log(error);
+    res.redirect('/admin/posts');
+  }
+});
+
 /** Create Post - Post Method */
 router.post('/add-post',async (req, res, next) => {
   try {
-    
     const { title, thumbnail, content } = req.body;
-
     const result = await Post.create({ title, thumbnail, content });
-
     console.log(result);
-
   } catch (error) {
     console.log('Error on add-post[post]')
   }
-
   res.render('admin/addPost');
 });
 
 
 /** Posts */
-router.get('/posts', function(req, res, next) {
-  res.render('admin/posts', {  });
+router.get('/posts', async (req, res, next) => {
+  try {
+    const posts = await Post.findAll();
+    for (const post of posts) {
+      console.log("TİTLE ",post.title);
+    }
+    res.render('admin/posts', { posts });
+  } catch (error) {
+    console.log('EEROR',error);
+    res.render('admin/posts', { posts:[] });
+  }
+});
 
+
+/** Upload Photo Page */
+router.get('/upload-photo', function(req, res, next) {
+  res.render('admin/upload-photo', { });
 });
 
 module.exports = router;

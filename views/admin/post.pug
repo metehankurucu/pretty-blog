@@ -1,0 +1,55 @@
+extends layout
+
+block content
+  .card.bg-secondary.shadow
+    .card-header.bg-white.border-0
+      .row.align-items-center
+        .col-8
+          h3.mb-0 Edit Post
+    //- p !{content}
+    .card-body
+      form(role='form' action='/admin/post/'+ post.id method='post')
+        .pl-lg-4
+          .form-group.focused
+            label.form-control-label(for='input-title') Title
+            input#input-title.form-control.form-control-alternative(type='text' placeholder='Super Title' name='title' value=post.title)
+          .form-group
+            label.form-control-label(for='input-thumbnail') Thumbnail
+            input#input-thumbnail.form-control.form-control-alternative(type='text' name='thumbnail' placeholder='https://example.com/image.png' value=post.thumbnail)
+          .form-group.focused
+            label.form-control-label(for='input-content') Content
+            textarea#input-content.form-control.form-control-alternative(rows='4' name='content' placeholder='Post content...')= post.content
+          button.btn.btn-info.btn-block(type='submit') Update
+  hr
+  div.text-center
+    if post.status == 1
+      a.btn.btn-default(href='/admin/post/hide/'+ post.id) Hide
+    else
+      a.btn.btn-default(href='/admin/post/make-visible/'+ post.id)  Make Visible
+    button.btn.btn-danger(type='button' data-toggle='modal' data-target='#deleteModal') Delete
+    // Delete Modal
+    #deleteModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='deleteModalLabel' aria-hidden='true')
+      .modal-dialog(role='document')
+        .modal-content
+          .modal-header
+            h5#deleteModalLabel.modal-title Are you sure?
+            button.close(type='button' data-dismiss='modal' aria-label='Close')
+              span(aria-hidden='true') &times;
+          .modal-body
+            | The post will be deleted. Do you want to continue?
+          .modal-footer
+            button.btn.btn-secondary(type='button' data-dismiss='modal') Close
+            a.btn.btn-danger(href='/admin/post/delete/'+ post.id) Delete
+
+  br
+  br
+
+block javascripts
+  script(src='https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js')
+  script.
+    CKEDITOR.replace( 'input-content' );
+
+
+  
+
+

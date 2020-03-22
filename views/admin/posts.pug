@@ -5,223 +5,30 @@ block content
     .col
       .card.shadow
         .card-header.border-0
-          h3.mb-0 Card tables
-        .table-responsive
+          h3.mb-0 Posts
+        .table-responsive.text-center
           table.table.align-items-center.table-flush
             thead.thead-light
               tr
-                th(scope='col') Project
-                th(scope='col') Budget
+                th(scope='col') Title
                 th(scope='col') Status
-                th(scope='col') Users
-                th(scope='col') Completion
-                th(scope='col')
             tbody
-              tr
-                th(scope='row')
-                  .media.align-items-center
-                    a.avatar.rounded-circle.mr-3(href='#')
-                      img(alt='Image placeholder' src='../assets/img/theme/bootstrap.jpg')
-                    .media-body
-                      span.mb-0.text-sm Argon Design System
-                td
-                  | $2,500 USD
-                td
-                  span.badge.badge-dot.mr-4
-                    i.bg-warning
-                    |  pending
-                td
-                  .avatar-group
-                    a.avatar.avatar-sm(href='#' data-toggle='tooltip' data-original-title='Ryan Tompson')
-                      img.rounded-circle(alt='Image placeholder' src='../assets/img/theme/team-1-800x800.jpg')
-                    a.avatar.avatar-sm(href='#' data-toggle='tooltip' data-original-title='Romina Hadid')
-                      img.rounded-circle(alt='Image placeholder' src='../assets/img/theme/team-2-800x800.jpg')
-                    a.avatar.avatar-sm(href='#' data-toggle='tooltip' data-original-title='Alexander Smith')
-                      img.rounded-circle(alt='Image placeholder' src='../assets/img/theme/team-3-800x800.jpg')
-                    a.avatar.avatar-sm(href='#' data-toggle='tooltip' data-original-title='Jessica Doe')
-                      img.rounded-circle(alt='Image placeholder' src='../assets/img/theme/team-4-800x800.jpg')
-                td
-                  .d-flex.align-items-center
-                    span.mr-2 60%
-                    div
-                      .progress
-                        .progress-bar.bg-warning(role='progressbar' aria-valuenow='60' aria-valuemin='0' aria-valuemax='100' style='width: 60%;')
-                td.text-right
-                  .dropdown
-                    a.btn.btn-sm.btn-icon-only.text-light(href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
-                      i.fas.fa-ellipsis-v
-                    .dropdown-menu.dropdown-menu-right.dropdown-menu-arrow
-                      a.dropdown-item(href='#') Action
-                      a.dropdown-item(href='#') Another action
-                      a.dropdown-item(href='#') Something else here
-              tr
-                th(scope='row')
-                  .media.align-items-center
-                    a.avatar.rounded-circle.mr-3(href='#')
-                      img(alt='Image placeholder' src='../assets/img/theme/angular.jpg')
-                    .media-body
-                      span.mb-0.text-sm Angular Now UI Kit PRO
-                td
-                  | $1,800 USD
-                td
-                  span.badge.badge-dot
-                    i.bg-success
-                    |  completed
-                td
-                  .avatar-group
-                    a.avatar.avatar-sm(href='#' data-toggle='tooltip' data-original-title='Ryan Tompson')
-                      img.rounded-circle(alt='Image placeholder' src='../assets/img/theme/team-1-800x800.jpg')
-                    a.avatar.avatar-sm(href='#' data-toggle='tooltip' data-original-title='Romina Hadid')
-                      img.rounded-circle(alt='Image placeholder' src='../assets/img/theme/team-2-800x800.jpg')
-                    a.avatar.avatar-sm(href='#' data-toggle='tooltip' data-original-title='Alexander Smith')
-                      img.rounded-circle(alt='Image placeholder' src='../assets/img/theme/team-3-800x800.jpg')
-                    a.avatar.avatar-sm(href='#' data-toggle='tooltip' data-original-title='Jessica Doe')
-                      img.rounded-circle(alt='Image placeholder' src='../assets/img/theme/team-4-800x800.jpg')
-                td
-                  .d-flex.align-items-center
-                    span.mr-2 100%
-                    div
-                      .progress
-                        .progress-bar.bg-success(role='progressbar' aria-valuenow='100' aria-valuemin='0' aria-valuemax='100' style='width: 100%;')
-                td.text-right
-                  .dropdown
-                    a.btn.btn-sm.btn-icon-only.text-light(href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
-                      i.fas.fa-ellipsis-v
-                    .dropdown-menu.dropdown-menu-right.dropdown-menu-arrow
-                      a.dropdown-item(href='#') Action
-                      a.dropdown-item(href='#') Another action
-                      a.dropdown-item(href='#') Something else here
-              tr
-                th(scope='row')
-                  .media.align-items-center
-                    a.avatar.rounded-circle.mr-3(href='#')
-                      img(alt='Image placeholder' src='../assets/img/theme/sketch.jpg')
-                    .media-body
-                      span.mb-0.text-sm Black Dashboard
-                td
-                  | $3,150 USD
-                td
-                  span.badge.badge-dot.mr-4
-                    i.bg-danger
-                    |  delayed
-                td
-                  .avatar-group
-                    a.avatar.avatar-sm(href='#' data-toggle='tooltip' data-original-title='Ryan Tompson')
-                      img.rounded-circle(alt='Image placeholder' src='../assets/img/theme/team-1-800x800.jpg')
-                    a.avatar.avatar-sm(href='#' data-toggle='tooltip' data-original-title='Romina Hadid')
-                      img.rounded-circle(alt='Image placeholder' src='../assets/img/theme/team-2-800x800.jpg')
-                    a.avatar.avatar-sm(href='#' data-toggle='tooltip' data-original-title='Alexander Smith')
-                      img.rounded-circle(alt='Image placeholder' src='../assets/img/theme/team-3-800x800.jpg')
-                    a.avatar.avatar-sm(href='#' data-toggle='tooltip' data-original-title='Jessica Doe')
-                      img.rounded-circle(alt='Image placeholder' src='../assets/img/theme/team-4-800x800.jpg')
-                td
-                  .d-flex.align-items-center
-                    span.mr-2 72%
-                    div
-                      .progress
-                        .progress-bar.bg-danger(role='progressbar' aria-valuenow='72' aria-valuemin='0' aria-valuemax='100' style='width: 72%;')
-                td.text-right
-                  .dropdown
-                    a.btn.btn-sm.btn-icon-only.text-light(href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
-                      i.fas.fa-ellipsis-v
-                    .dropdown-menu.dropdown-menu-right.dropdown-menu-arrow
-                      a.dropdown-item(href='#') Action
-                      a.dropdown-item(href='#') Another action
-                      a.dropdown-item(href='#') Something else here
-              tr
-                th(scope='row')
-                  .media.align-items-center
-                    a.avatar.rounded-circle.mr-3(href='#')
-                      img(alt='Image placeholder' src='../assets/img/theme/react.jpg')
-                    .media-body
-                      span.mb-0.text-sm React Material Dashboard
-                td
-                  | $4,400 USD
-                td
-                  span.badge.badge-dot
-                    i.bg-info
-                    |  on schedule
-                td
-                  .avatar-group
-                    a.avatar.avatar-sm(href='#' data-toggle='tooltip' data-original-title='Ryan Tompson')
-                      img.rounded-circle(alt='Image placeholder' src='../assets/img/theme/team-1-800x800.jpg')
-                    a.avatar.avatar-sm(href='#' data-toggle='tooltip' data-original-title='Romina Hadid')
-                      img.rounded-circle(alt='Image placeholder' src='../assets/img/theme/team-2-800x800.jpg')
-                    a.avatar.avatar-sm(href='#' data-toggle='tooltip' data-original-title='Alexander Smith')
-                      img.rounded-circle(alt='Image placeholder' src='../assets/img/theme/team-3-800x800.jpg')
-                    a.avatar.avatar-sm(href='#' data-toggle='tooltip' data-original-title='Jessica Doe')
-                      img.rounded-circle(alt='Image placeholder' src='../assets/img/theme/team-4-800x800.jpg')
-                td
-                  .d-flex.align-items-center
-                    span.mr-2 90%
-                    div
-                      .progress
-                        .progress-bar.bg-info(role='progressbar' aria-valuenow='90' aria-valuemin='0' aria-valuemax='100' style='width: 90%;')
-                td.text-right
-                  .dropdown
-                    a.btn.btn-sm.btn-icon-only.text-light(href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
-                      i.fas.fa-ellipsis-v
-                    .dropdown-menu.dropdown-menu-right.dropdown-menu-arrow
-                      a.dropdown-item(href='#') Action
-                      a.dropdown-item(href='#') Another action
-                      a.dropdown-item(href='#') Something else here
-              tr
-                th(scope='row')
-                  .media.align-items-center
-                    a.avatar.rounded-circle.mr-3(href='#')
-                      img(alt='Image placeholder' src='../assets/img/theme/vue.jpg')
-                    .media-body
-                      span.mb-0.text-sm Vue Paper UI Kit PRO
-                td
-                  | $2,200 USD
-                td
-                  span.badge.badge-dot.mr-4
-                    i.bg-success
-                    |  completed
-                td
-                  .avatar-group
-                    a.avatar.avatar-sm(href='#' data-toggle='tooltip' data-original-title='Ryan Tompson')
-                      img.rounded-circle(alt='Image placeholder' src='../assets/img/theme/team-1-800x800.jpg')
-                    a.avatar.avatar-sm(href='#' data-toggle='tooltip' data-original-title='Romina Hadid')
-                      img.rounded-circle(alt='Image placeholder' src='../assets/img/theme/team-2-800x800.jpg')
-                    a.avatar.avatar-sm(href='#' data-toggle='tooltip' data-original-title='Alexander Smith')
-                      img.rounded-circle(alt='Image placeholder' src='../assets/img/theme/team-3-800x800.jpg')
-                    a.avatar.avatar-sm(href='#' data-toggle='tooltip' data-original-title='Jessica Doe')
-                      img.rounded-circle(alt='Image placeholder' src='../assets/img/theme/team-4-800x800.jpg')
-                td
-                  .d-flex.align-items-center
-                    span.mr-2 100%
-                    div
-                      .progress
-                        .progress-bar.bg-success(role='progressbar' aria-valuenow='100' aria-valuemin='0' aria-valuemax='100' style='width: 100%;')
-                td.text-right
-                  .dropdown
-                    a.btn.btn-sm.btn-icon-only.text-light(href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
-                      i.fas.fa-ellipsis-v
-                    .dropdown-menu.dropdown-menu-right.dropdown-menu-arrow
-                      a.dropdown-item(href='#') Action
-                      a.dropdown-item(href='#') Another action
-                      a.dropdown-item(href='#') Something else here
-        .card-footer.py-4
-          nav(aria-label='...')
-            ul.pagination.justify-content-end.mb-0
-              li.page-item.disabled
-                a.page-link(href='#' tabindex='-1')
-                  i.fas.fa-angle-left
-                  span.sr-only Previous
-              li.page-item.active
-                a.page-link(href='#') 1
-              li.page-item
-                a.page-link(href='#')
-                  | 2 
-                  span.sr-only (current)
-              li.page-item
-                a.page-link(href='#') 3
-              li.page-item
-                a.page-link(href='#')
-                  i.fas.fa-angle-right
-                  span.sr-only Next
-
+              each post in posts
+                tr
+                  th(scope='row')
+                    .media.align-items-center
+                      .media-body
+                        a(href='/admin/post/' + post.id)
+                          span.mb-0.text-sm= post.title
+                  td
+                    span.badge.badge-dot.mr-4
+                      if post.status == 1
+                        i.bg-success
+                        |  active
+                      else
+                        i.bg-warning
+                        |  nonactive
+              
     
 
 
