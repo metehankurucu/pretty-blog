@@ -27,5 +27,10 @@ module.exports = (sequelize, Sequelize) => {
 			allowNull: false,
 			defaultValue:0
 		},
+		time: {
+			type: Sequelize.INTEGER,
+			allowNull: false,
+			defaultValue:0
+		},
 	})
 };

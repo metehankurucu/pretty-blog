@@ -1,0 +1,63 @@
+extends layout
+
+block content
+  .card.bg-secondary.shadow
+    .card-header.bg-white.border-0
+      .row.align-items-center
+        .col-8
+          h3.mb-0 Edit About Page
+    .card-body
+      form(role='form' action='/admin/about' method='post')
+        .pl-lg-4
+          .form-group.focused
+            label.form-control-label(for='input-title') Name
+            input#input-title.form-control.form-control-alternative(type='text' placeholder='Your Name' name='name' value=info.name required)
+          .form-group.focused
+            label.form-control-label(for='input-title') Thumbnail
+            input#input-title.form-control.form-control-alternative(type='text' placeholder='Your Thumbnail' name='thumbnail' value=info.thumbnail required)
+          
+          .form-group.focused
+            label.form-control-label(for='input-content' ) About Me Content
+            textarea#input-content.form-control.form-control-alternative(rows='4' name='about' placeholder='Tell us who are you'  required)= info.about
+          label.form-control-label Links
+          .form-group
+            .input-group
+              .input-group-prepend
+                span#inputGroup-sizing-default.input-group-text Instagram
+              input.form-control(type='text' name='instagram' value=info.contact.instagram aria-describedby='inputGroup-sizing-default')
+              .input-group-prepend
+                span#inputGroup-sizing-default.input-group-text Twitter
+              input.form-control(type='text' name='twitter' value=info.contact.twitter aria-describedby='inputGroup-sizing-default')
+            .input-group
+              .input-group-prepend
+                span#inputGroup-sizing-default.input-group-text LinkedIn
+              input.form-control(type='text' name='linkedin' value=info.contact.linkedin aria-describedby='inputGroup-sizing-default')
+              .input-group-prepend
+                span#inputGroup-sizing-default.input-group-text Youtube
+              input.form-control(type='text' name='youtube' value=info.contact.youtube aria-describedby='inputGroup-sizing-default')
+            .input-group
+              .input-group-prepend
+                span#inputGroup-sizing-default.input-group-text Github
+              input.form-control(type='text' name='github' value=info.contact.github aria-describedby='inputGroup-sizing-default')
+              .input-group-prepend
+                span#inputGroup-sizing-default.input-group-text Website
+              input.form-control(type='text' name='website' value=info.contact.website aria-describedby='inputGroup-sizing-default')
+            .input-group
+              .input-group-prepend
+                span#inputGroup-sizing-default.input-group-text Email
+              input.form-control(type='text' name='email' value=info.contact.email aria-describedby='inputGroup-sizing-default')
+              .input-group-prepend
+                span#inputGroup-sizing-default.input-group-text Phone
+              input.form-control(type='text' name='phone' value=info.contact.phone aria-describedby='inputGroup-sizing-default')
+          button.btn.btn-info.btn-block(type='submit') Save
+
+
+block javascripts
+  script(src='https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js')
+  script.
+    CKEDITOR.replace( 'input-content' );
+
+
+  
+
+

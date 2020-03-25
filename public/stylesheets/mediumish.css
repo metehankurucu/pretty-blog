@@ -431,17 +431,29 @@ ul.tags li a:hover {
 	margin:1rem 0;
 }
 .sociallinks a {
-	background:#666;
-	color:#fff;
-	width:22px;
-	height:22px;
+	align-self: center;
+	color:#5DADE2;
+	width:36px;
+	height:36px;
 	display:inline-block;
 	text-align:center;
 	line-height:22px;
 	border-radius:50%;
-	font-size:12px;
+	font-size:24px;
+	align-self: center;
 }
 
 a.page-link{
 	color:#000;
+}
+
+.img-max{
+	max-height: 500px;
+}
+
+.custom-icon{
+	height: 30px;
+	width: 30px;
+
+
 }

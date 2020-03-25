@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-const { Post, sequelize } =  require('../helpers/database');
+const { Post, sequelize, Admin, Sequelize } =  require('../helpers/database');
 
 
 /* GET home page. */
@@ -37,10 +37,6 @@ router.get('/', async (req, res, next) => {
       limit:4
     });
 
-    for (const iterator of mostReads) {
-      console.log(iterator.createdAt);
-    }
-
     res.render('index', { posts, mostReads });
   } catch (error) {
     console.log('Error in index ',error);
@@ -49,16 +45,39 @@ router.get('/', async (req, res, next) => {
 });
 
 /* GET about page. */
-router.get('/about', function(req, res, next) {
-  res.render('author', { title: 'Hakkımda' });
+router.get('/about', async (req, res, next) => {
+  try {
+    const info = await Admin.findOne({ where:{ status:1 } });
+
+    const contact = JSON.parse(info.contact);
+    const contacts = [];
+
+    const icons = {
+      instagram:'fab fa-instagram',
+      twitter:'fab fa-twitter',
+      github:'fab fa-github',
+      website:'fas fa-globe',
+      phone:'fas fa-phone',
+      email:'fas fa-envelope',
+      youtube:'fab fa-youtube',
+      linkedin:'fab fa-linkedin'
+    };
+
+    for (const key in contact) {
+      if (contact.hasOwnProperty(key)) {
+        const element = contact[key];
+        if(element !== ''){
+          contacts.push({ platform:key, url:element, icon:icons[key] });
+        }
+      }
+    }
+    res.render('author',{ info, contacts });
+    console.log(contacts);
+  } catch (error) {
+    console.log(error);
+    res.redirect('/');
+  }
 });
-
-
-/* GET contact page. */
-router.get('/contact', function(req, res, next) {
-  res.render('contact', { title: 'İletişim' });
-});
-
 
 /** All Posts */
 router.get('/posts', async (req, res, next) => {
@@ -99,9 +118,41 @@ router.get('/posts', async (req, res, next) => {
 });
 
 /** Post */
-router.get('/posts/:id', function(req, res, next) {
-  console.log('HERE')
-  res.render('post', { title: '' });
+router.get('/post/:id', async (req, res, next) => {
+  try {
+    const { id } = req.params;
+
+    const post = await Post.findOne({
+      where:{ id },
+      attributes: [
+        'id',
+        'title',
+        'content',
+        'thumbnail',
+        [sequelize.fn('date_format', sequelize.col('createdAt'), '%d.%m.%Y'), 'createdAt']
+      ],
+    });
+
+    const more = await Post.findAll({
+      where:{
+        status:1
+      },
+      attributes: [
+        'id',
+        'title',
+        'content',
+        'thumbnail',
+        [sequelize.fn('date_format', sequelize.col('createdAt'), '%d.%m.%Y'), 'createdAt']
+      ],
+      order: Sequelize.literal('rand()'),
+      limit:3
+    });
+    console.log(more);
+    res.render('post', { post, more });
+  } catch (error) {
+    console.log(error);
+    res.render('post', { post:{ title:'', thumbnail:'', content:'' }, more:[] });
+  }
 });
 
 module.exports = router;

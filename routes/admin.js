@@ -205,5 +205,41 @@ router.get('/photos', async (req, res, next) => {
 });
 
 
+/** About */
+router.get('/about', async (req, res, next) => {
+  try {
+    const { id } = req.decoded;
+
+    const info = await Admin.findOne({ where: { id }});
+    info.contact = JSON.parse(info.contact);
+
+    res.render('admin/about', { info });
+  } catch (error) {
+    res.render('admin/about', {message:'An error occured' , type: 'danger'});
+  }
+});
+
+/** About Update  */
+router.post('/about', async (req, res, next) => {
+  try {
+    const { id } = req.decoded;
+    const { name, about, thumbnail, instagram, twitter, linkedin, youtube, github, website, email, phone } = req.body;
+    const contact = { instagram, twitter, linkedin, youtube, github, website, email, phone }
+    
+    const result = await Admin.update(
+      { name, about, thumbnail, contact:JSON.stringify(contact) },
+      { where : { id } } 
+    );
+
+    const info = await Admin.findOne({ where: { id }});
+    info.contact = JSON.parse(info.contact);
+
+    res.render('admin/about', { info, message:'Updated successfully' , type: 'success' });
+  } catch (error) {
+    res.render('admin/about', { message:'An error occured' , type: 'danger' });
+  }
+});
+
+
 
 module.exports = router;

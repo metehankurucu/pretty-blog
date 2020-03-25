@@ -1,5 +1,5 @@
 module.exports = (sequelize, Sequelize) => {
-	return sequelize.define('admins', {
+	return sequelize.define('settings', {
 		id: {
 			type: Sequelize.INTEGER,
 			primaryKey: true,
@@ -28,10 +28,6 @@ module.exports = (sequelize, Sequelize) => {
 		},
 		contact: {
 			type: Sequelize.TEXT,
-			allowNull: false,
-		},
-		thumbnail: {
-			type: Sequelize.STRING,
 			allowNull: false,
 		},
 	})
