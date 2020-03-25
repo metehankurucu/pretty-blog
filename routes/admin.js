@@ -2,7 +2,20 @@ var express = require('express');
 var router = express.Router();
 var bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const { Admin, Post } =  require('../helpers/database');
+const { Admin, Post, Photo } =  require('../helpers/database');
+const config = require('../config');
+
+//multer for file upload
+var multer  = require('multer')
+const storage = multer.diskStorage({
+  destination:(req, file, callback) => {
+    callback(null, './uploads/')
+  },
+  filename:(req, file, callback) => {
+    callback(null, new Date().toISOString() + file.originalname)
+  }
+})
+var upload = multer({ storage });
 
 
 /** Login Page */
@@ -168,5 +181,29 @@ router.get('/posts', async (req, res, next) => {
 router.get('/upload-photo', function(req, res, next) {
   res.render('admin/upload-photo', { });
 });
+
+/** Upload Photo Post */
+router.post('/upload-photo',upload.single('photo'), async (req, res, next) => {
+  try {
+    const url = config.BASE_URL + req.file.path;
+    const result = await Photo.create({ url });
+    res.render('admin/upload-photo', { message:'Photo uploaded successfully' , type: 'success' });
+  } catch (error) {
+    res.render('admin/upload-photo', { message:'An error occured', type:'warning' });
+  }
+});
+
+
+/** Photos */
+router.get('/photos', async (req, res, next) => {
+  try {
+    const photos = await Photo.findAll({ order : [['id','desc']]});
+    res.render('admin/photos', { photos });
+  } catch (error) {
+    res.render('admin/photos', { photos:[] });
+  }
+});
+
+
 
 module.exports = router;

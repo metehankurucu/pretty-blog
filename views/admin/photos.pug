@@ -1,0 +1,26 @@
+extends layout
+
+block content
+  .row
+    .col
+      .card.shadow
+        .card-header.border-0
+          h3.mb-0 Photos
+        .table-responsive.text-center
+          table.table.align-items-center.table-flush
+            thead.thead-light
+              tr
+                th(scope='col') Preview
+                th(scope='col') Url
+            tbody
+              each photo in photos
+                tr
+                  td
+                    img.card-img-top(src=photo.url alt='Photo')
+                  td
+                    .media.align-items-center
+                      .media-body
+                        a(href=photo.url)
+                          span.mb-0.text-sm= photo.url   
+
+

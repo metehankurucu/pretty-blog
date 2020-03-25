@@ -12,13 +12,13 @@ block content
         .pl-lg-4
           .form-group.focused
             label.form-control-label(for='input-title') Title
-            input#input-title.form-control.form-control-alternative(type='text' placeholder='Super Title' name='title')
+            input#input-title.form-control.form-control-alternative(type='text' placeholder='Super Title' name='title' required)
           .form-group
-            label.form-control-label(for='input-thumbnail') Thumbnail
-            input#input-thumbnail.form-control.form-control-alternative(type='text' name='thumbnail' placeholder='https://example.com/image.png')
+            label.form-control-label(for='input-thumbnail' required) Thumbnail
+            input#input-thumbnail.form-control.form-control-alternative(type='text' name='thumbnail' placeholder='https://example.com/image.png' required)
           .form-group.focused
-            label.form-control-label(for='input-content') Content
-            textarea#input-content.form-control.form-control-alternative(rows='4' name='content' placeholder='Post content...')
+            label.form-control-label(for='input-content' required) Content
+            textarea#input-content.form-control.form-control-alternative(rows='4' name='content' placeholder='Post content...' required)
           button.btn.btn-info.btn-block(type='submit') Save
 
 

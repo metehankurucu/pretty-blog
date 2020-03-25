@@ -1,0 +1,53 @@
+extends layout
+
+block content
+  h1.sitetitle Pretty Blog
+  p.lead
+      | Simple and minimalist pretty blog
+  section.featured-posts
+    section.recent-posts
+      .section-title
+        h2
+          span All Stories
+      .card-columns.listrecent
+        // begin post
+        each post in posts
+          .card
+            a(href='/post/' + post.id)
+              img.img-fluid(src= post.thumbnail alt='Post Thumbnail')
+            .card-block
+              h2.card-title
+                a(href='/post/' + post.id)= post.title
+              h4.card-text !{post.content.substr(0,150)}...
+              .metafooter
+                .wrapfooter
+                  //- span.meta-footer-thumb
+                    a(href='author.html')
+                      img.author-thumb(src='https://www.gravatar.com/avatar/e56154546cf4be74e393c62d1ae9f9d4?s=250&d=mm&r=x' alt='Sal')
+                  span.author-meta
+                    //- span.post-name
+                      a(href='author.html') Sal
+                    //- br
+                    span.post-date= post.createdAt
+                    //- span.dot
+                    //- span.post-read 6 min read
+                  span.post-read-more
+                      a(href='/post/' + post.id title='Read Story') Read More
+
+      ul.pagination.justify-content-end
+        if previous
+          li.page-item
+            a.page-link(href='/posts?page=' + previous tabindex='-1') Previous
+        else if previous === 0
+          li.page-item
+              a.page-link(href='/posts?page=0' tabindex='-1') Previous
+        else
+          li.page-item.disabled
+            a.page-link(href='/posts' tabindex='-1') Previous
+        if next
+          li.page-item
+            a.page-link(href='/posts?page=' + next tabindex='-1') Next
+        else
+          li.page-item.disabled
+            a.page-link(href='/posts' tabindex='-1') Next
+        

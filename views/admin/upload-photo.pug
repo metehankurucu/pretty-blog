@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  .card.bg-secondary.shadow
+    .card-header.bg-white.border-0
+      .row.align-items-center
+        .col-8
+          h3.mb-0 Upload Photo
+    .card-body
+      form(role='form' action='/admin/upload-photo' method='post' enctype="multipart/form-data")
+        .pl-lg-4
+          .form-group.focused
+              label(for='photo') Select a photo
+              input#photo.form-control-file(type='file' name='photo' accept="image/png, image/jpeg, image/jpg")
+          button.btn.btn-info.btn-block(type='submit') Save
+
+
+
+  
+
+

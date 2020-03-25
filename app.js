@@ -5,8 +5,8 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+
 var indexRouter = require('./routes/index');
-var postsRouter = require('./routes/posts');
 var adminRouter = require('./routes/admin');
 var auth = require('./middleware/auth');
 const config = require('./config');
@@ -23,6 +23,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/uploads', express.static('uploads'));
+
 
 app.set('admin_secret_key', config.admin_secret_key );
 
@@ -30,7 +32,6 @@ app.use('/', indexRouter);
 
 app.use(express.static(path.join(__dirname, '../public')));
 
-app.use('/posts', postsRouter);
 app.use('/admin', auth);
 app.use('/admin', adminRouter);
 

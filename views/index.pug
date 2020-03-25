@@ -1,285 +1,72 @@
 extends layout
 
 block content
+  h1.sitetitle Pretty Blog
+  p.lead
+      | Simple and minimalist pretty blog
   section.featured-posts
     .section-title
       h2
-        span Featured
+        span Most Read
     .card-columns.listfeaturedtag
-      // begin post
-      .card
-        .row
-          .col-md-5.wrapthumbnail
-            a(href='post.html')
-              .thumbnail(style='background-image:url(assets/img/demopic/1.jpg);')
-          .col-md-7
-            .card-block
-              h2.card-title
-                a(href='post.html') We&apos;re living some strange times
-              h4.card-text
-                | This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
-              .metafooter
-                .wrapfooter
-                  span.meta-footer-thumb
-                    a(href='author.html')
-                      img.author-thumb(src='https://www.gravatar.com/avatar/e56154546cf4be74e393c62d1ae9f9d4?s=250&d=mm&r=x' alt='Sal')
-                  span.author-meta
-                    span.post-name
-                      a(href='author.html') Steve
-                    br
-                    span.post-date 22 July 2017
-                    span.dot
-                    span.post-read 6 min read
-                  span.post-read-more
-                    a(href='post.html' title='Read Story')
-                      svg.svgIcon-use(width='25' height='25' viewbox='0 0 25 25')
-                        path(d='M19 6c0-1.1-.9-2-2-2H8c-1.1 0-2 .9-2 2v14.66h.012c.01.103.045.204.12.285a.5.5 0 0 0 .706.03L12.5 16.85l5.662 4.126a.508.508 0 0 0 .708-.03.5.5 0 0 0 .118-.285H19V6zm-6.838 9.97L7 19.636V6c0-.55.45-1 1-1h9c.55 0 1 .45 1 1v13.637l-5.162-3.668a.49.49 0 0 0-.676 0z' fill-rule='evenodd')
-      // end post
-      // begin post
-      .card
-        .row
-          .col-md-5.wrapthumbnail
-            a(href='post.html')
-              .thumbnail(style='background-image:url(assets/img/demopic/2.jpg);')
-          .col-md-7
-            .card-block
-              h2.card-title
-                a(href='post.html') The beauty of this world is in your heart
-              h4.card-text
-                | This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
-              .metafooter
-                .wrapfooter
-                  span.meta-footer-thumb
-                    a(href='author.html')
-                      img.author-thumb(src='https://www.gravatar.com/avatar/e56154546cf4be74e393c62d1ae9f9d4?s=250&d=mm&r=x' alt='Sal')
-                  span.author-meta
-                    span.post-name
-                      a(href='author.html') Jane
-                    br
-                    span.post-date 22 July 2017
-                    span.dot
-                    span.post-read 6 min read
-                  span.post-read-more
-                    a(href='post.html' title='Read Story')
-                      svg.svgIcon-use(width='25' height='25' viewbox='0 0 25 25')
-                        path(d='M19 6c0-1.1-.9-2-2-2H8c-1.1 0-2 .9-2 2v14.66h.012c.01.103.045.204.12.285a.5.5 0 0 0 .706.03L12.5 16.85l5.662 4.126a.508.508 0 0 0 .708-.03.5.5 0 0 0 .118-.285H19V6zm-6.838 9.97L7 19.636V6c0-.55.45-1 1-1h9c.55 0 1 .45 1 1v13.637l-5.162-3.668a.49.49 0 0 0-.676 0z' fill-rule='evenodd')
-      // end post
-      // begin post
-      .card
-        .row
-          .col-md-5.wrapthumbnail
-            a(href='post.html')
-              .thumbnail(style='background-image:url(assets/img/demopic/3.jpg);')
-          .col-md-7
-            .card-block
-              h2.card-title
-                a(href='post.html') Dreaming of Las Vegas Crazyness
-              h4.card-text
-                | This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
-              .metafooter
-                .wrapfooter
-                  span.meta-footer-thumb
-                    a(href='author.html')
-                      img.author-thumb(src='https://www.gravatar.com/avatar/e56154546cf4be74e393c62d1ae9f9d4?s=250&d=mm&r=x' alt='Sal')
-                  span.author-meta
-                    span.post-name
-                      a(href='author.html') Mary
-                    br
-                    span.post-date 22 July 2017
-                    span.dot
-                    span.post-read 6 min read
-                  span.post-read-more
-                    a(href='post.html' title='Read Story')
-                      svg.svgIcon-use(width='25' height='25' viewbox='0 0 25 25')
-                        path(d='M19 6c0-1.1-.9-2-2-2H8c-1.1 0-2 .9-2 2v14.66h.012c.01.103.045.204.12.285a.5.5 0 0 0 .706.03L12.5 16.85l5.662 4.126a.508.508 0 0 0 .708-.03.5.5 0 0 0 .118-.285H19V6zm-6.838 9.97L7 19.636V6c0-.55.45-1 1-1h9c.55 0 1 .45 1 1v13.637l-5.162-3.668a.49.49 0 0 0-.676 0z' fill-rule='evenodd')
-      // end post
-      // begin post
-      .card
-        .row
-          .col-md-5.wrapthumbnail
-            a(href='post.html')
-              .thumbnail(style='background-image:url(assets/img/demopic/4.jpg);')
-          .col-md-7
-            .card-block
-              h2.card-title
-                a(href='post.html') San Francisco at its best view in all seasons
-              h4.card-text
-                | This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
-              .metafooter
-                .wrapfooter
-                  span.meta-footer-thumb
-                    a(href='author.html')
-                      img.author-thumb(src='https://www.gravatar.com/avatar/e56154546cf4be74e393c62d1ae9f9d4?s=250&d=mm&r=x' alt='Sal')
-                  span.author-meta
-                    span.post-name
-                      a(href='author.html') Sal
-                    br
-                    span.post-date 22 July 2017
-                    span.dot
-                    span.post-read 6 min read
-                  span.post-read-more
-                    a(href='post.html' title='Read Story')
-                      svg.svgIcon-use(width='25' height='25' viewbox='0 0 25 25')
-                        path(d='M19 6c0-1.1-.9-2-2-2H8c-1.1 0-2 .9-2 2v14.66h.012c.01.103.045.204.12.285a.5.5 0 0 0 .706.03L12.5 16.85l5.662 4.126a.508.508 0 0 0 .708-.03.5.5 0 0 0 .118-.285H19V6zm-6.838 9.97L7 19.636V6c0-.55.45-1 1-1h9c.55 0 1 .45 1 1v13.637l-5.162-3.668a.49.49 0 0 0-.676 0z' fill-rule='evenodd')
-      // end post
+      each post in mostReads
+        .card
+          .row
+            .col-md-5.wrapthumbnail
+              a(href='/post/' + post.id)
+                .thumbnail(style='background-image:url(' + post.thumbnail + ');')
+            .col-md-7
+              .card-block
+                h2.card-title
+                  a(href='post.html')= post.title
+                h4.card-text !{post.content.substr(0,150)}...
+                .metafooter
+                  .wrapfooter
+                    //- span.meta-footer-thumb
+                      a(href='author.html')
+                        img.author-thumb(src='https://www.gravatar.com/avatar/e56154546cf4be74e393c62d1ae9f9d4?s=250&d=mm&r=x' alt='Sal')
+                    span.author-meta
+                      //- span.post-name
+                        a(href='author.html') Steve
+                      //- br
+                      span.post-date= post.createdAt
+                      //- span.dot
+                      //- span.post-read 6 min read
+                    span.post-read-more
+                      a(href='/post/' + post.id title='Read Story') Read More
+                        //- svg.svgIcon-use(width='25' height='25' viewbox='0 0 25 25')
+                          path(d='M19 6c0-1.1-.9-2-2-2H8c-1.1 0-2 .9-2 2v14.66h.012c.01.103.045.204.12.285a.5.5 0 0 0 .706.03L12.5 16.85l5.662 4.126a.508.508 0 0 0 .708-.03.5.5 0 0 0 .118-.285H19V6zm-6.838 9.97L7 19.636V6c0-.55.45-1 1-1h9c.55 0 1 .45 1 1v13.637l-5.162-3.668a.49.49 0 0 0-.676 0z' fill-rule='evenodd')
     section.recent-posts
       .section-title
         h2
           span All Stories
       .card-columns.listrecent
         // begin post
-        .card
-          a(href='post.html')
-            img.img-fluid(src='images/demopic/5.jpg' alt='')
-          .card-block
-            h2.card-title
-              a(href='post.html') Autumn doesn&apos;t have to be nostalgic, you know?
-            h4.card-text
-              | This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
-            .metafooter
-              .wrapfooter
-                span.meta-footer-thumb
-                  a(href='author.html')
-                    img.author-thumb(src='https://www.gravatar.com/avatar/e56154546cf4be74e393c62d1ae9f9d4?s=250&d=mm&r=x' alt='Sal')
-                span.author-meta
-                  span.post-name
-                    a(href='author.html') Sal
-                  br
-                  span.post-date 22 July 2017
-                  span.dot
-                  span.post-read 6 min read
-                span.post-read-more
-                  a(href='post.html' title='Read Story')
-                    svg.svgIcon-use(width='25' height='25' viewbox='0 0 25 25')
-                      path(d='M19 6c0-1.1-.9-2-2-2H8c-1.1 0-2 .9-2 2v14.66h.012c.01.103.045.204.12.285a.5.5 0 0 0 .706.03L12.5 16.85l5.662 4.126a.508.508 0 0 0 .708-.03.5.5 0 0 0 .118-.285H19V6zm-6.838 9.97L7 19.636V6c0-.55.45-1 1-1h9c.55 0 1 .45 1 1v13.637l-5.162-3.668a.49.49 0 0 0-.676 0z' fill-rule='evenodd')
-        // end post
-        // begin post
-        .card
-          a(href='post.html')
-            img.img-fluid(src='images/demopic/6.jpg' alt='')
-          .card-block
-            h2.card-title
-              a(href='post.html') Best galleries in the world with photos
-            h4.card-text
-              | This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
-            .metafooter
-              .wrapfooter
-                span.meta-footer-thumb
-                  a(href='author.html')
-                    img.author-thumb(src='https://www.gravatar.com/avatar/e56154546cf4be74e393c62d1ae9f9d4?s=250&d=mm&r=x' alt='Sal')
-                span.author-meta
-                  span.post-name
-                    a(href='author.html') Sal
-                  br
-                  span.post-date 22 July 2017
-                  span.dot
-                  span.post-read 6 min read
-                span.post-read-more
-                  a(href='post.html' title='Read Story')
-                    svg.svgIcon-use(width='25' height='25' viewbox='0 0 25 25')
-                      path(d='M19 6c0-1.1-.9-2-2-2H8c-1.1 0-2 .9-2 2v14.66h.012c.01.103.045.204.12.285a.5.5 0 0 0 .706.03L12.5 16.85l5.662 4.126a.508.508 0 0 0 .708-.03.5.5 0 0 0 .118-.285H19V6zm-6.838 9.97L7 19.636V6c0-.55.45-1 1-1h9c.55 0 1 .45 1 1v13.637l-5.162-3.668a.49.49 0 0 0-.676 0z' fill-rule='evenodd')
-        // end post
-        // begin post
-        .card
-          a(href='post.html')
-            img.img-fluid(src='images/demopic/7.jpg' alt='')
-          .card-block
-            h2.card-title
-              a(href='post.html') Little red dress and a perfect summer
-            h4.card-text
-              | This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
-            .metafooter
-              .wrapfooter
-                span.meta-footer-thumb
-                  a(href='author.html')
-                    img.author-thumb(src='https://www.gravatar.com/avatar/e56154546cf4be74e393c62d1ae9f9d4?s=250&d=mm&r=x' alt='Sal')
-                span.author-meta
-                  span.post-name
-                    a(href='author.html') Sal
-                  br
-                  span.post-date 22 July 2017
-                  span.dot
-                  span.post-read 6 min read
-                span.post-read-more
-                  a(href='post.html' title='Read Story')
-                    svg.svgIcon-use(width='25' height='25' viewbox='0 0 25 25')
-                      path(d='M19 6c0-1.1-.9-2-2-2H8c-1.1 0-2 .9-2 2v14.66h.012c.01.103.045.204.12.285a.5.5 0 0 0 .706.03L12.5 16.85l5.662 4.126a.508.508 0 0 0 .708-.03.5.5 0 0 0 .118-.285H19V6zm-6.838 9.97L7 19.636V6c0-.55.45-1 1-1h9c.55 0 1 .45 1 1v13.637l-5.162-3.668a.49.49 0 0 0-.676 0z' fill-rule='evenodd')
-        // end post
-        // begin post
-        .card
-          a(href='post.html')
-            img.img-fluid(src='images/demopic/8.jpg' alt='')
-          .card-block
-            h2.card-title
-              a(href='post.html') Thinking outside the box can help you prosper
-            h4.card-text
-              | This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
-            .metafooter
-              .wrapfooter
-                span.meta-footer-thumb
-                  a(href='author.html')
-                    img.author-thumb(src='https://www.gravatar.com/avatar/e56154546cf4be74e393c62d1ae9f9d4?s=250&d=mm&r=x' alt='Sal')
-                span.author-meta
-                  span.post-name
-                    a(href='author.html') Sal
-                  br
-                  span.post-date 22 July 2017
-                  span.dot
-                  span.post-read 6 min read
-                span.post-read-more
-                  a(href='post.html' title='Read Story')
-                    svg.svgIcon-use(width='25' height='25' viewbox='0 0 25 25')
-                      path(d='M19 6c0-1.1-.9-2-2-2H8c-1.1 0-2 .9-2 2v14.66h.012c.01.103.045.204.12.285a.5.5 0 0 0 .706.03L12.5 16.85l5.662 4.126a.508.508 0 0 0 .708-.03.5.5 0 0 0 .118-.285H19V6zm-6.838 9.97L7 19.636V6c0-.55.45-1 1-1h9c.55 0 1 .45 1 1v13.637l-5.162-3.668a.49.49 0 0 0-.676 0z' fill-rule='evenodd')
-        // end post
-        // begin post
-        .card
-          a(href='post.html')
-            img.img-fluid(src='images/demopic/9.jpg' alt='')
-          .card-block
-            h2.card-title
-              a(href='post.html') 10 Things you should know about choosing your house
-            h4.card-text
-              | This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
-            .metafooter
-              .wrapfooter
-                span.meta-footer-thumb
-                  a(href='author.html')
-                    img.author-thumb(src='https://www.gravatar.com/avatar/e56154546cf4be74e393c62d1ae9f9d4?s=250&d=mm&r=x' alt='Sal')
-                span.author-meta
-                  span.post-name
-                    a(href='author.html') Sal
-                  br
-                  span.post-date 22 July 2017
-                  span.dot
-                  span.post-read 6 min read
-                span.post-read-more
-                  a(href='post.html' title='Read Story')
-                    svg.svgIcon-use(width='25' height='25' viewbox='0 0 25 25')
-                      path(d='M19 6c0-1.1-.9-2-2-2H8c-1.1 0-2 .9-2 2v14.66h.012c.01.103.045.204.12.285a.5.5 0 0 0 .706.03L12.5 16.85l5.662 4.126a.508.508 0 0 0 .708-.03.5.5 0 0 0 .118-.285H19V6zm-6.838 9.97L7 19.636V6c0-.55.45-1 1-1h9c.55 0 1 .45 1 1v13.637l-5.162-3.668a.49.49 0 0 0-.676 0z' fill-rule='evenodd')
-        // end post
-        // begin post
-        .card
-          a(href='post.html')
-            img.img-fluid(src='images/demopic/10.jpg' alt='')
-          .card-block
-            h2.card-title
-              a(href='post.html') Visiting the world means learning cultures
-            h4.card-text
-              | This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
-            .metafooter
-              .wrapfooter
-                span.meta-footer-thumb
-                  a(href='author.html')
-                    img.author-thumb(src='https://www.gravatar.com/avatar/e56154546cf4be74e393c62d1ae9f9d4?s=250&d=mm&r=x' alt='Sal')
-                span.author-meta
-                  span.post-name
-                    a(href='author.html') Sal
-                  br
-                  span.post-date 22 July 2017
-                  span.dot
-                  span.post-read 6 min read
-                span.post-read-more
-                  a(href='post.html' title='Read Story')
-                    svg.svgIcon-use(width='25' height='25' viewbox='0 0 25 25')
-                      path(d='M19 6c0-1.1-.9-2-2-2H8c-1.1 0-2 .9-2 2v14.66h.012c.01.103.045.204.12.285a.5.5 0 0 0 .706.03L12.5 16.85l5.662 4.126a.508.508 0 0 0 .708-.03.5.5 0 0 0 .118-.285H19V6zm-6.838 9.97L7 19.636V6c0-.55.45-1 1-1h9c.55 0 1 .45 1 1v13.637l-5.162-3.668a.49.49 0 0 0-.676 0z' fill-rule='evenodd')
-    
+        each post in posts
+          .card
+            a(href='/post/' + post.id)
+              img.img-fluid(src= post.thumbnail alt='Post Thumbnail')
+            .card-block
+              h2.card-title
+                a(href='/post/' + post.id)= post.title
+              h4.card-text !{post.content.substr(0,150)}...
+              .metafooter
+                .wrapfooter
+                  //- span.meta-footer-thumb
+                    a(href='author.html')
+                      img.author-thumb(src='https://www.gravatar.com/avatar/e56154546cf4be74e393c62d1ae9f9d4?s=250&d=mm&r=x' alt='Sal')
+                  span.author-meta
+                    //- span.post-name
+                      a(href='author.html') Sal
+                    //- br
+                    span.post-date= post.createdAt
+                    //- span.dot
+                    //- span.post-read 6 min read
+                  span.post-read-more
+                      a(href='/post/' + post.id title='Read Story') Read More
+    nav(aria-label='Page navigation example')
+      ul.pagination.justify-content-end
+        li.page-item.disabled
+          a.page-link(href='/' tabindex='-1') Previous
+        li.page-item
+          a.page-link(href='/posts?page=1' style='color: #000;') Next

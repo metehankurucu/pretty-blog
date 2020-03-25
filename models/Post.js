@@ -17,10 +17,15 @@ module.exports = (sequelize, Sequelize) => {
 			type: Sequelize.STRING,
 			allowNull: false
 		},
+		views: {
+			type: Sequelize.INTEGER,
+			defaultValue:0,
+			allowNull: false
+		},
 		status: {
 			type: Sequelize.INTEGER,
 			allowNull: false,
 			defaultValue:0
-		}
+		},
 	})
 };

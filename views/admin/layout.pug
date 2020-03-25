@@ -91,6 +91,10 @@ nav#sidenav-main.navbar.navbar-vertical.fixed-left.navbar-expand-md.navbar-light
           a.nav-link.active(href='/admin/upload-photo')
             i.ni.ni-cloud-upload-96.text-blue
             |  Upload Photo
+        li.nav-item.active
+          a.nav-link.active(href='/admin/photos')
+            i.ni.ni-album-2.text-blue
+            |  Photos
 .main-content
   // Navbar
   nav#navbar-main.navbar.navbar-top.navbar-expand-md.navbar-dark
@@ -127,6 +131,15 @@ nav#sidenav-main.navbar.navbar-vertical.fixed-left.navbar-expand-md.navbar-light
       .header-body
         block header
   .container-fluid.mt--7
+    if message
+      .alert.alert-dismissible.fade.show(role='alert' class='alert-' + type)
+        span.alert-icon
+          i.ni.ni-active-40
+        span.alert-text
+          strong= message
+        button.close(type='button' data-dismiss='alert' aria-label='Close')
+          span(aria-hidden='true') &times;
+
     block content
 
    
