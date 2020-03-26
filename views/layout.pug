@@ -2,10 +2,10 @@ doctype html
 head
   meta(charset='utf-8')
   meta(name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no')
-  meta(name='description' content='')
+  meta(name='description' content=config.description)
   meta(name='author' content='')
-  link(rel='icon' href='/images/favicon.ico')
-  title Pretty Blog
+  link(rel='icon' href=config.logo)
+  title= config.title
   // Bootstrap core CSS
   link(href='/stylesheets/bootstrap.min.css' rel='stylesheet')
   // Fonts
@@ -23,23 +23,22 @@ nav.navbar.navbar-toggleable-md.navbar-light.bg-white.fixed-top.mediumnavigation
   .container
     // Begin Logo
     a.navbar-brand(href='/')
-      img(src='/images/logo.png' alt='logo')
+      img(src=config.logo alt='logo')
     // End Logo
     #navbarsExampleDefault.collapse.navbar-collapse
       // Begin Menu
       ul.navbar-nav.ml-auto
         li.nav-item.active
-          a.nav-link(href='/posts/')
-            | Stories 
+          a.nav-link(href='/posts/')= config.stories
             span.sr-only (current)
         //- li.nav-item
         //-   a.nav-link(href='post.html') Post
         li.nav-item
-          a.nav-link(href='/about') About Me
+          a.nav-link(href='/about')= config.aboutMe
       // End Menu
       // Begin Search
-      form.form-inline.my-2.my-lg-0
-        input.form-control.mr-sm-2(type='text' placeholder='Search')
+      form.form-inline.my-2.my-lg-0(role='form' action='/posts/' method='get')
+        input.form-control.mr-sm-2(type='text' name='query' placeholder=config.search)
         span.search-icon
           svg.svgIcon-use(width='25' height='25' viewbox='0 0 25 25')
             path(d='M20.067 18.933l-4.157-4.157a6 6 0 1 0-.884.884l4.157 4.157a.624.624 0 1 0 .884-.884zM6.5 11c0-2.62 2.13-4.75 4.75-4.75S16 8.38 16 11s-2.13 4.75-4.75 4.75S6.5 13.62 6.5 11z')
@@ -55,8 +54,7 @@ nav.navbar.navbar-toggleable-md.navbar-light.bg-white.fixed-top.mediumnavigation
     block content
 
   .footer
-    p.pull-left
-      | Copyright &copy; 2020 Pretty Blog
+    p.pull-left= config.copyright
     .clearfix
   //
     End Footer

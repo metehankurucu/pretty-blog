@@ -1,14 +1,13 @@
 extends layout
 
 block content
-  h1.sitetitle Pretty Blog
-  p.lead
-      | Simple and minimalist pretty blog
+  h1.sitetitle= config.title
+  p.lead= config.description
   section.featured-posts
     section.recent-posts
       .section-title
         h2
-          span All Stories
+          span= config.allStories
       .card-columns.listrecent
         // begin post
         each post in posts
@@ -32,22 +31,22 @@ block content
                     //- span.dot
                     //- span.post-read 6 min read
                   span.post-read-more
-                      a(href='/post/' + post.id title='Read Story') Read More
+                      a(href='/post/' + post.id title='Read Story')= config.readMore
 
       ul.pagination.justify-content-end
         if previous
           li.page-item
-            a.page-link(href='/posts?page=' + previous tabindex='-1') Previous
+            a.page-link(href='/posts?page=' + previous tabindex='-1')= config.previous
         else if previous === 0
           li.page-item
-              a.page-link(href='/posts?page=0' tabindex='-1') Previous
+              a.page-link(href='/posts?page=0' tabindex='-1')= config.previous
         else
           li.page-item.disabled
-            a.page-link(href='/posts' tabindex='-1') Previous
+            a.page-link(href='/posts' tabindex='-1')= config.previous
         if next
           li.page-item
-            a.page-link(href='/posts?page=' + next tabindex='-1') Next
+            a.page-link(href='/posts?page=' + next tabindex='-1')= config.next
         else
           li.page-item.disabled
-            a.page-link(href='/posts' tabindex='-1') Next
+            a.page-link(href='/posts' tabindex='-1')= config.next
         

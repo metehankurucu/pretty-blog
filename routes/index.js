@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const { Post, sequelize, Admin, Sequelize } =  require('../helpers/database');
+const config = require('../config');
 
 
 /* GET home page. */
@@ -37,10 +38,10 @@ router.get('/', async (req, res, next) => {
       limit:4
     });
 
-    res.render('index', { posts, mostReads });
+    res.render('index', { posts, mostReads, config });
   } catch (error) {
     console.log('Error in index ',error);
-    res.render('index', { posts:[], mostReads:[] });
+    res.render('index', { posts:[], mostReads:[], config });
   }
 });
 
@@ -71,8 +72,7 @@ router.get('/about', async (req, res, next) => {
         }
       }
     }
-    res.render('author',{ info, contacts });
-    console.log(contacts);
+    res.render('author',{ info, contacts, config });
   } catch (error) {
     console.log(error);
     res.redirect('/');
@@ -110,10 +110,10 @@ router.get('/posts', async (req, res, next) => {
     }else{
       next = posts.length == perPage ? currentPage + 1 : false;
       previous = currentPage <= 0 ? false : currentPage - 1;
-      res.render('posts', { posts , previous, next });
+      res.render('posts', { posts , previous, next, config  });
     }
   } catch (error) {
-    res.render('posts', { posts:[], previous:false, next:false });
+    res.render('posts', { posts:[], previous:false, next:false, config  });
   }
 });
 
@@ -147,11 +147,10 @@ router.get('/post/:id', async (req, res, next) => {
       order: Sequelize.literal('rand()'),
       limit:3
     });
-    console.log(more);
-    res.render('post', { post, more });
+    res.render('post', { post, more, config  });
   } catch (error) {
     console.log(error);
-    res.render('post', { post:{ title:'', thumbnail:'', content:'' }, more:[] });
+    res.render('post', { post:{ title:'', thumbnail:'', content:'' }, more:[], config  });
   }
 });
 
