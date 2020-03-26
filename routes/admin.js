@@ -4,6 +4,7 @@ var bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { Admin, Post, Photo } =  require('../helpers/database');
 const config = require('../config');
+const fs = require('fs');
 
 //multer for file upload
 var multer  = require('multer')
@@ -20,13 +21,13 @@ var upload = multer({ storage });
 
 /** Login Page */
 router.get('/login', function(req, res, next) {
-  res.render('admin/login', {  });
+  res.render('admin/login');
 });
 
 
 /** Forgot Password Page */
 router.get('/forgot-password', function(req, res, next) {
-  res.render('admin/forgot-password', {});
+  res.render('admin/forgot-password');
 });
 
 /** Login Post */
@@ -141,7 +142,7 @@ router.get('/post/make-visible/:id', async (req, res, next) => {
 router.get('/post/delete/:id', async (req, res, next) => {
   const postId = req.params.id;
   try {
-    const result = await Post.destroy({ where:{ id: postId }});
+    const result = await Post.destroy({ where:{ id: postId } });
     res.redirect('/admin/posts');
   } catch (error) {
     console.log(error);
@@ -190,6 +191,23 @@ router.post('/upload-photo',upload.single('photo'), async (req, res, next) => {
     res.render('admin/upload-photo', { message:'Photo uploaded successfully' , type: 'success' });
   } catch (error) {
     res.render('admin/upload-photo', { message:'An error occured', type:'warning' });
+  }
+});
+
+/** Delete Photo */
+router.get('/delete-photo', async (req, res, next) => {
+  try {
+    const { url, id } = req.query;
+    const path = url.split(config.BASE_URL)[1];
+    fs.unlink(path, (err) => {
+      if (!err){
+        Photo.destroy({ where:{ id } });
+      }
+    });
+    res.redirect('/admin/photos');
+  } catch (error) {
+    console.log(error);
+    res.redirect('/admin/photos');
   }
 });
 

@@ -12,6 +12,7 @@ block content
               tr
                 th(scope='col') Preview
                 th(scope='col') Url
+                th(scope='col') 
             tbody
               each photo in photos
                 tr
@@ -21,6 +22,8 @@ block content
                     .media.align-items-center
                       .media-body
                         a(href=photo.url)
-                          span.mb-0.text-sm= photo.url   
+                          span.mb-0.text-sm= photo.url 
+                  td
+                    a.btn.btn-danger(href='/admin/delete-photo?url=' + photo.url + '&id=' + photo.id) Delete  
 
 
