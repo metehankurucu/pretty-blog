@@ -7,12 +7,12 @@ block header
         .card-body
           .row
             .col
-              h5.card-title.text-uppercase.text-muted.mb-0 Traffic
-              span.h2.font-weight-bold.mb-0 350,897
+              h5.card-title.text-uppercase.text-muted.mb-0 Posts
+              span.h2.font-weight-bold.mb-0= stat.post
             .col-auto
               .icon.icon-shape.bg-danger.text-white.rounded-circle.shadow
                 i.fas.fa-chart-bar
-          p.mt-3.mb-0.text-muted.text-sm
+          //- p.mt-3.mb-0.text-muted.text-sm
             span.text-success.mr-2
               i.fa.fa-arrow-up
               |  3.48%
@@ -22,17 +22,17 @@ block header
         .card-body
           .row
             .col
-              h5.card-title.text-uppercase.text-muted.mb-0 New users
-              span.h2.font-weight-bold.mb-0 2,356
+              h5.card-title.text-uppercase.text-muted.mb-0 Views
+              span.h2.font-weight-bold.mb-0= stat.views
             .col-auto
               .icon.icon-shape.bg-warning.text-white.rounded-circle.shadow
                 i.fas.fa-chart-pie
-          p.mt-3.mb-0.text-muted.text-sm
+          //- p.mt-3.mb-0.text-muted.text-sm
             span.text-danger.mr-2
               i.fas.fa-arrow-down
               |  3.48%
             span.text-nowrap Since last week
-    .col-xl-3.col-lg-6
+    //- .col-xl-3.col-lg-6
       .card.card-stats.mb-4.mb-xl-0
         .card-body
           .row
@@ -47,7 +47,7 @@ block header
               i.fas.fa-arrow-down
               |  1.10%
             span.text-nowrap Since yesterday
-    .col-xl-3.col-lg-6
+    //- .col-xl-3.col-lg-6
       .card.card-stats.mb-4.mb-xl-0
         .card-body
           .row
@@ -65,7 +65,7 @@ block header
 
 
 block content
-  .row
+  //- .row
     .col-xl-8.mb-5.mb-xl-0
       .card.bg-gradient-default.shadow
         .card-header.bg-transparent
@@ -93,7 +93,7 @@ block content
                 div
             // Chart wrapper
             canvas#chart-sales.chart-canvas.chartjs-render-monitor(width='641' height='350' style='display: block; width: 641px; height: 350px;')
-    .col-xl-4
+    //- .col-xl-4
       .card.shadow
         .card-header.bg-transparent
           .row.align-items-center

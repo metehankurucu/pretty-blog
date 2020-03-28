@@ -11,6 +11,7 @@ const db = {};
 db.Admin = sequelize.import(__dirname + '/../models/Admin.js');
 db.Post = sequelize.import(__dirname + '/../models/Post.js');
 db.Photo = sequelize.import(__dirname + '/../models/Photo.js');
+db.Comment = sequelize.import(__dirname + '/../models/Comment.js');
 
 
 db.Sequelize = Sequelize;

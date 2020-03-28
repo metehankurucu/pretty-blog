@@ -15,7 +15,7 @@ head
   title
     | Pretty Blog Dashboard
   // Favicon
-  link(href='/admin/assets/img/brand/favicon.png' rel='icon' type='image/png')
+  link(href=admin.logo rel='icon' type='image/png')
   // Fonts
   link(href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet')
   // Icons
@@ -31,13 +31,13 @@ nav#sidenav-main.navbar.navbar-vertical.fixed-left.navbar-expand-md.navbar-light
       span.navbar-toggler-icon
     // Brand
     a.navbar-brand.pt-0(href='/admin')
-      img.navbar-brand-img(src='/admin/assets/img/brand/blue.png' alt='...')
+      img.navbar-brand-img(src=admin.logo alt='...')
     // User
     ul.nav.align-items-center.d-md-none
       li.nav-item.dropdown
-        a.nav-link.nav-link-icon(href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+        //- a.nav-link.nav-link-icon(href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
           i.ni.ni-bell-55
-        .dropdown-menu.dropdown-menu-arrow.dropdown-menu-right(aria-labelledby='navbar-default_dropdown_1')
+        //- .dropdown-menu.dropdown-menu-arrow.dropdown-menu-right(aria-labelledby='navbar-default_dropdown_1')
           a.dropdown-item(href='#') Action
           a.dropdown-item(href='#') Another action
           .dropdown-divider
@@ -46,8 +46,7 @@ nav#sidenav-main.navbar.navbar-vertical.fixed-left.navbar-expand-md.navbar-light
         a.nav-link(href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
           .media.align-items-center
             span.avatar.avatar-sm.rounded-circle
-              img(alt='Image placeholder' src='/admin/assets/img/theme/team-1-800x800.jpg\
-              ')
+              img(alt='Image placeholder' src=admin.thumbnail)
         .dropdown-menu.dropdown-menu-arrow.dropdown-menu-right
           .dropdown-header.noti-title
             h6.text-overflow.m-0 Welcome!
@@ -61,13 +60,13 @@ nav#sidenav-main.navbar.navbar-vertical.fixed-left.navbar-expand-md.navbar-light
         .row
           .col-6.collapse-brand
             a(href='/admin/index.html')
-              img(src='/admin/assets/img/brand/blue.png')
+              img(src=admin.logo)
           .col-6.collapse-close
             button.navbar-toggler(type='button' data-toggle='collapse' data-target='#sidenav-collapse-main' aria-controls='sidenav-main' aria-expanded='false' aria-label='Toggle sidenav')
               span
               span
       // Form
-      form.mt-4.mb-3.d-md-none
+      //- form.mt-4.mb-3.d-md-none
         .input-group.input-group-rounded.input-group-merge
           input.form-control.form-control-rounded.form-control-prepended(type='search' placeholder='Search' aria-label='Search')
           .input-group-prepend
@@ -106,7 +105,7 @@ nav#sidenav-main.navbar.navbar-vertical.fixed-left.navbar-expand-md.navbar-light
       // Brand
       a.h4.mb-0.text-white.text-uppercase.d-none.d-lg-inline-block(href='/admin') Dashboard
       // Form
-      form.navbar-search.navbar-search-dark.form-inline.mr-3.d-none.d-md-flex.ml-lg-auto
+      //- form.navbar-search.navbar-search-dark.form-inline.mr-3.d-none.d-md-flex.ml-lg-auto
         .form-group.mb-0
           .input-group.input-group-alternative
             .input-group-prepend
@@ -119,9 +118,9 @@ nav#sidenav-main.navbar.navbar-vertical.fixed-left.navbar-expand-md.navbar-light
           a.nav-link.pr-0(href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
             .media.align-items-center
               span.avatar.avatar-sm.rounded-circle
-                img(alt='Image placeholder' src='/admin/assets/img/theme/team-4-800x800.jpg')
+                img(alt=admin.thumbnail src = admin.thumbnail)
               .media-body.ml-2.d-none.d-lg-block
-                span.mb-0.text-sm.font-weight-bold Jessica Jones
+                span.mb-0.text-sm.font-weight-bold= admin.name
           .dropdown-menu.dropdown-menu-arrow.dropdown-menu-right
             .dropdown-header.noti-title
               h6.text-overflow.m-0 Welcome!

@@ -82,16 +82,22 @@ router.get('/about', async (req, res, next) => {
 /** All Posts */
 router.get('/posts', async (req, res, next) => {
   try {
-    let { page } = req.query;
+    let { page, query } = req.query;
     let currentPage = page && Number(page) >= 0 ? Number(page) : 0;
     const perPage = 6;
     let previous,next;
 
+    let where = { status: 1 };
+
+    if(query){
+      where.title = {
+        [Sequelize.Op.like]: '%' + query + '%'
+      }
+    }
+
     const posts = await Post.findAll(
       {
-        where:{
-          status:1
-        },
+        where,
         attributes: [
           'id',
           'title',
@@ -106,13 +112,14 @@ router.get('/posts', async (req, res, next) => {
     );
   
     if(posts.length == 0){
-      res.redirect('/posts?page=0');
+      res.render('posts', { posts:[], previous:false, next:false, config  });
     }else{
       next = posts.length == perPage ? currentPage + 1 : false;
       previous = currentPage <= 0 ? false : currentPage - 1;
       res.render('posts', { posts , previous, next, config  });
     }
   } catch (error) {
+    console.log(error);
     res.render('posts', { posts:[], previous:false, next:false, config  });
   }
 });
@@ -129,9 +136,12 @@ router.get('/post/:id', async (req, res, next) => {
         'title',
         'content',
         'thumbnail',
+        'views',
         [sequelize.fn('date_format', sequelize.col('createdAt'), '%d.%m.%Y'), 'createdAt']
       ],
     });
+
+    const updateViews = await Post.update({ views: Number(post.views) + 1 }, { where:{ id } });
 
     const more = await Post.findAll({
       where:{

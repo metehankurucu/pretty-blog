@@ -5,6 +5,7 @@ const jwt = require('jsonwebtoken');
 const { Admin, Post, Photo } =  require('../helpers/database');
 const config = require('../config');
 const fs = require('fs');
+// const nodemailer = require("nodemailer");
 
 //multer for file upload
 var multer  = require('multer')
@@ -25,11 +26,6 @@ router.get('/login', function(req, res, next) {
 });
 
 
-/** Forgot Password Page */
-router.get('/forgot-password', function(req, res, next) {
-  res.render('admin/forgot-password');
-});
-
 /** Login Post */
 router.post('/login', async (req, res, next) => {
   try {
@@ -46,7 +42,9 @@ router.post('/login', async (req, res, next) => {
           {
             id: user.id,
             email: user.email,
-            status: user.status
+            status: user.status,
+            name:user.name,
+            thumbnail:user.thumbnail
           }, 
           req.app.get('admin_secret_key'), 
         );
@@ -73,15 +71,23 @@ router.get('/logout', async (req, res, next) => {
 });
 
 /** Home */
-router.get('/',async function(req, res, next) {
-  console.log('REQ ',req.decoded)
-  res.render('admin/index', {  });
+router.get('/',async (req, res, next) => {
+  try {
+    let views = 0;
+    const posts = await Post.findAll();
+    for (const post of posts) {
+      views += Number(post.views);
+    }
+    res.render('admin/index', { admin:{ ...req.decoded, logo:config.logo },  stat:{post:posts.length.toString(), views:views.toString()} });
+  } catch (error) {
+    res.render('admin/index', { admin:{ ...req.decoded, logo:config.logo }, stat:{post:'0',views:'0'} });
+  }
 });
 
 
 /** Create Post - Get Method */
 router.get('/add-post', function(req, res, next) {
-  res.render('admin/addPost', {  });
+  res.render('admin/addPost', { admin:{ ...req.decoded, logo:config.logo } });
 
 });
 
@@ -91,10 +97,10 @@ router.get('/post/:id', async (req, res, next) => {
   const postId = req.params.id;
   try {
     const post = await Post.findOne({ where:{ id: postId} });
-    res.render('admin/post', { post });
+    res.render('admin/post', { post, admin:{ ...req.decoded, logo:config.logo } });
   } catch (error) {
     console.log(error);
-    res.render('admin/post', {  });
+    res.render('admin/post', { admin:{ ...req.decoded, logo:config.logo } });
   }
 });
 
@@ -107,10 +113,10 @@ router.post('/post/:id', async (req, res, next) => {
     const result = await Post.update({ title, thumbnail, content },{ where:{ id: postId }});
       
     const post = await Post.findOne({ where:{ id: postId } });
-    res.render('admin/post', { post });
+    res.render('admin/post', { post, admin:{ ...req.decoded, logo:config.logo } });
   } catch (error) {
     console.log(error);
-    res.render('admin/post', {  });
+    res.render('admin/post', { admin:{ ...req.decoded, logo:config.logo } });
   }
 });
 
@@ -159,28 +165,24 @@ router.post('/add-post',async (req, res, next) => {
   } catch (error) {
     console.log('Error on add-post[post]')
   }
-  res.render('admin/addPost');
+  res.render('admin/addPost', { admin:{ ...req.decoded, logo:config.logo } });
 });
 
 
 /** Posts */
 router.get('/posts', async (req, res, next) => {
   try {
-    const posts = await Post.findAll();
-    for (const post of posts) {
-      console.log("TİTLE ",post.title);
-    }
-    res.render('admin/posts', { posts });
+    const posts = await Post.findAll({ order:[ [ 'id', 'DESC'] ] });
+    res.render('admin/posts', { posts, admin:{ ...req.decoded, logo:config.logo } });
   } catch (error) {
-    console.log('EEROR',error);
-    res.render('admin/posts', { posts:[] });
+    res.render('admin/posts', { posts:[], admin:{ ...req.decoded, logo:config.logo }});
   }
 });
 
 
 /** Upload Photo Page */
 router.get('/upload-photo', function(req, res, next) {
-  res.render('admin/upload-photo', { });
+  res.render('admin/upload-photo', { admin:{ ...req.decoded, logo:config.logo } });
 });
 
 /** Upload Photo Post */
@@ -188,9 +190,9 @@ router.post('/upload-photo',upload.single('photo'), async (req, res, next) => {
   try {
     const url = config.BASE_URL + req.file.path;
     const result = await Photo.create({ url });
-    res.render('admin/upload-photo', { message:'Photo uploaded successfully' , type: 'success' });
+    res.render('admin/upload-photo', { message:'Photo uploaded successfully' , type: 'success', admin:{ ...req.decoded, logo:config.logo }});
   } catch (error) {
-    res.render('admin/upload-photo', { message:'An error occured', type:'warning' });
+    res.render('admin/upload-photo', { message:'An error occured', type:'warning', admin:{ ...req.decoded, logo:config.logo } });
   }
 });
 
@@ -216,9 +218,9 @@ router.get('/delete-photo', async (req, res, next) => {
 router.get('/photos', async (req, res, next) => {
   try {
     const photos = await Photo.findAll({ order : [['id','desc']]});
-    res.render('admin/photos', { photos });
+    res.render('admin/photos', { photos, admin:{ ...req.decoded, logo:config.logo } });
   } catch (error) {
-    res.render('admin/photos', { photos:[] });
+    res.render('admin/photos', { photos:[], admin:{ ...req.decoded, logo:config.logo } });
   }
 });
 
@@ -231,9 +233,9 @@ router.get('/about', async (req, res, next) => {
     const info = await Admin.findOne({ where: { id }});
     info.contact = JSON.parse(info.contact);
 
-    res.render('admin/about', { info });
+    res.render('admin/about', { info, admin:{ ...req.decoded, logo:config.logo } });
   } catch (error) {
-    res.render('admin/about', {message:'An error occured' , type: 'danger'});
+    res.render('admin/about', {message:'An error occured' , type: 'danger', admin:{ ...req.decoded, logo:config.logo }});
   }
 });
 
@@ -252,12 +254,64 @@ router.post('/about', async (req, res, next) => {
     const info = await Admin.findOne({ where: { id }});
     info.contact = JSON.parse(info.contact);
 
-    res.render('admin/about', { info, message:'Updated successfully' , type: 'success' });
+    res.render('admin/about', { info, message:'Updated successfully' , type: 'success', admin:{ ...req.decoded, logo:config.logo } });
   } catch (error) {
-    res.render('admin/about', { message:'An error occured' , type: 'danger' });
+    res.render('admin/about', { message:'An error occured' , type: 'danger', admin:{ ...req.decoded, logo:config.logo } });
   }
 });
 
+
+/*  For forgot password action, edit this
+router.get('/forgot-password', function(req, res, next) {
+  res.render('admin/forgot-password');
+});
+
+
+router.post('/forgot-password', async (req, res, next) => {
+  try {
+    const { email } = req.body;
+
+    let user = await Admin.findOne({ where: { email } });
+
+    if(!user){
+      res.render('admin/forgot-password', { message: 'Admin not found' });
+    }else{
+      let testAccount = await nodemailer.createTestAccount();
+
+      // create reusable transporter object using the default SMTP transport
+      let transporter = nodemailer.createTransport({
+        host: "smtp.ethereal.email",
+        port: 587,
+        secure: false, // true for 465, false for other ports
+        auth: {
+          user: testAccount.user, // generated ethereal user
+          pass: testAccount.pass // generated ethereal password
+        }
+      });
+
+      // send mail with defined transport object
+      let info = await transporter.sendMail({
+        from: '"Fred Foo 👻" <foo@example.com>', // sender address
+        to: "mktr192@gmail.com", // list of receivers
+        subject: "Hello ✔", // Subject line
+        text: "Hello world?", // plain text body
+        html: "<b>Hello world?</b>" // html body
+      });
+
+      console.log("Message sent: %s", info.messageId);
+      // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
+
+      // Preview only available when sending through an Ethereal account
+      console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+      // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
+      res.render('admin/forgot-password', { message: 'Check Your Email' });
+    }
+  } catch (error) {
+    res.render('admin/forgot-password', { message: 'An error occured' });
+
+  }
+});
+*/
 
 
 module.exports = router;
