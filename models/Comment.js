@@ -26,22 +26,13 @@ module.exports = (sequelize, Sequelize) => {
 			allowNull: true,
 		},
 		replied_name:{
-			type: Sequelize.INTEGER,
+			type: Sequelize.STRING,
 			allowNull: true,
 		},
 		replied_date:{
 			type: Sequelize.DATE,
 			allowNull: true,
+			defaultValue:Sequelize.NOW
 		},
-		like:{
-			type: Sequelize.INTEGER,
-			allowNull: true,
-			defaultValue:0
-		},
-		dislike:{
-			type: Sequelize.INTEGER,
-			allowNull: true,
-			defaultValue:0
-		}
 	})
 };

@@ -1,0 +1,44 @@
+extends layout
+
+block content
+  .card.bg-secondary.shadow
+    .card-header.bg-white.border-0
+      .row.align-items-center
+        .col-8
+          h3.mb-0 Comment
+    .card-body
+      .table-responsive.text-center
+          table.table.align-items-center.table-flush
+            thead.thead-light
+              tr
+                th(scope='col') Name
+                th(scope='col') Email
+                th(scope='col') Post
+            tbody
+              tr
+                th(scope='row')
+                  .media.align-items-center
+                    .media-body
+                      span.mb-0.text-sm= comment.name
+                th(scope='row')
+                    .media.align-items-center
+                      .media-body
+                        span.mb-0.text-sm= comment.email
+                th(scope='row')
+                  .media.align-items-center
+                    .media-body
+                      a(href='/posts/' + comment.post_id, target="_blank")
+                        span.mb-0.text-sm= post.title
+      form(role='form' action='' method='post')
+        .pl-lg-4
+          .form-group.focused
+            label.form-control-label(for='' required) Comment
+            p= comment.comment
+          .form-group.focused
+            label.form-control-label(for='input-content' required) Reply
+            textarea#input-content.form-control.form-control-alternative(rows='4' name='reply' placeholder='Enter your reply...' required)= comment.reply
+          button.btn.btn-info.btn-block(type='submit') Save
+
+  
+
+

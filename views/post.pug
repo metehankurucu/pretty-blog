@@ -113,24 +113,10 @@ block content
                 small.text-muted= comment.createdAt
               strong= comment.name
               p= comment.comment
-              a(href='/comments/like/' + comment.id)
-                i.fas.fa-thumbs-up(style='')
-                = comment.like
-              | &nbsp;&nbsp;&nbsp;&nbsp;
-              a(href='/comments/dislike/' + comment.id)
-                i.fas.fa-thumbs-down(style='')
-                = comment.dislike
           if comment.reply
             .media-body.inner
               span.text-muted.pull-right
-                small.text-muted= comment.createdAt
-              strong= comment.name
-              p= comment.comment
-              a(href='/comments/like/' + comment.id)
-                i.fas.fa-thumbs-up(style='')
-                = comment.like
-              | &nbsp;&nbsp;&nbsp;&nbsp;
-              a(href='/comments/dislike/' + comment.id)
-                i.fas.fa-thumbs-down(style='')
-                = comment.dislike
+                small.text-muted= comment.replied_date
+              strong= comment.replied_name
+              p= comment.reply
           hr

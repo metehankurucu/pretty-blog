@@ -3,7 +3,6 @@ var router = express.Router();
 const { Post, sequelize, Admin, Sequelize, Comment } =  require('../helpers/database');
 const config = require('../config');
 
-
 /* GET home page. */
 router.get('/', async (req, res, next) => {
   try {
@@ -168,10 +167,9 @@ router.get('/posts/:id', async (req, res, next) => {
         'name',
         'reply',
         'replied_name',
-        'like',
-        'dislike',
-        [sequelize.fn('date_format', sequelize.col('createdAt'), '%d.%m.%Y %H:%m'), 'createdAt']
-        // [sequelize.fn('date_format', sequelize.col('replied_date'), '%d.%m.%Y %H:%m'), 'replied_date']
+        // 'replied_date'
+        [sequelize.fn('date_format', sequelize.col('createdAt'), '%d.%m.%Y %H:%i'), 'createdAt'],
+        [sequelize.fn('date_format', sequelize.col('replied_date'), '%d.%m.%Y %H:%i'), 'replied_date']
       ],
       order:[ [ 'id', 'DESC'] ],
     });
@@ -191,38 +189,6 @@ router.post('/comments',async (req, res, next) => {
     res.redirect('/posts/' + req.body.post_id + '#comments');
   } catch (error) {
     console.log('Error on comment[post]', error);
-    res.redirect('/');
-  }
-});
-
-/** Like Comment */
-router.get('/comments/like/:id',async (req, res, next) => {
-  try {
-    const { id } = req.params;
-
-    const comment = await Comment.findOne({ where:{ id } });
-
-    const like = await Comment.update({ like: Number(comment.like) + 1 }, { where:{ id } });
-    
-    res.redirect('/posts/' + comment.post_id + '#comments');
-  } catch (error) {
-    console.log('Error on comment[post]', error);
-    res.redirect('/');
-  }
-});
-
-/** Dislike Comment */
-router.get('/comments/dislike/:id',async (req, res, next) => {
-  try {
-    const { id } = req.params;
-
-    const comment = await Comment.findOne({ where:{ id } });
-
-    const dislike = await Comment.update({ dislike: Number(comment.dislike) + 1 }, { where:{ id } });
-    
-    res.redirect('/posts/' + comment.post_id + '#comments');
-  } catch (error) {
-    console.log('Error on dislike', error);
     res.redirect('/');
   }
 });

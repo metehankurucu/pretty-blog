@@ -6,7 +6,6 @@ block content
       .row.align-items-center
         .col-8
           h3.mb-0 Create Post
-    //- p !{content}
     .card-body
       form(role='form' action='/admin/add-post' method='post')
         .pl-lg-4
@@ -20,7 +19,11 @@ block content
             label.form-control-label(for='input-content' required) Content
             textarea#input-content.form-control.form-control-alternative(rows='4' name='content' placeholder='Post content...' required)
           button.btn.btn-info.btn-block(type='submit') Save
-
+    hr
+    .text-center(style=" padding:10px") Some Useful Links (For Free Images)
+      a(href='https://unsplash.com/' style="padding:10px") Unsplash
+      a(href='https://pixabay.com/' style="padding:10px") Pixabay
+    br
 
 block javascripts
   script(src='https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js')

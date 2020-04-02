@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const { Admin, Post, Photo } =  require('../helpers/database');
+const { Admin, Post, Photo, Comment } =  require('../helpers/database');
 const config = require('../config');
 const fs = require('fs');
 // const nodemailer = require("nodemailer");
@@ -312,6 +312,74 @@ router.post('/forgot-password', async (req, res, next) => {
   }
 });
 */
+
+
+/** Comments */
+router.get('/comments', async (req, res, next) => {
+  try {
+    let { page } = req.query;
+    let currentPage = page && Number(page) >= 0 ? Number(page) : 0;
+    const perPage = 30;
+    let previous,next;
+
+    const comments = await Comment.findAll(
+      {
+        order:[ [ 'id', 'DESC'] ],
+        offset:perPage * currentPage,
+        limit:perPage
+      }
+    );
+    if(comments.length == 0){
+      res.render('admin/comments', { comments:[], previous:false, next:false, admin:{ ...req.decoded, logo:config.logo }  });
+    }else{
+      next = comments.length == perPage ? currentPage + 1 : false;
+      previous = currentPage <= 0 ? false : currentPage - 1;
+      res.render('admin/comments', { comments , previous, next, admin:{ ...req.decoded, logo:config.logo } });
+    }
+  } catch (error) {
+    console.log(error);
+    res.render('admin/comments', { comments:[], previous:false, next:false, admin:{ ...req.decoded, logo:config.logo }  });
+  }
+});
+
+
+/** GET Comment  */
+router.get('/comments/:id', async (req, res, next) => {
+  const { id } = req.params;
+  try {
+    const comment = await Comment.findOne({ where:{ id } });
+    const post = await Post.findOne({ where:{ id:comment.post_id } });
+    res.render('admin/comment', { admin:{ ...req.decoded, logo:config.logo }, comment, post });
+  } catch (error) {
+    console.log(error);
+    res.redirect('admin/comment', { admin:{ ...req.decoded, logo:config.logo }, message:'An error occured', type:'danger', comment:{}});
+  }
+});
+
+
+/** POST Comment (reply)  */
+router.post('/comments/:id', async (req, res, next) => {
+  const { id } = req.params;
+  const { reply } = req.body;
+  try {
+
+    const replied_date = new Date();
+
+    const params = { reply, replied_date, replied_name:req.decoded.name };
+
+    console.log(params);
+    
+    const update = await Comment.update(params, { where:{ id } });
+
+    const comment = await Comment.findOne({ where:{ id } });
+    const post = await Post.findOne({ where:{ id:comment.post_id } });
+
+    res.render('admin/comment', { admin:{ ...req.decoded, logo:config.logo }, comment, post, message:'Reply Saved!', type:'success' });
+  } catch (error) {
+    console.log(error);
+    res.render('admin/comment', { admin:{ ...req.decoded, logo:config.logo }, message:'An error occured', type:'danger', comment:{} });
+  }
+});
 
 
 module.exports = router;
