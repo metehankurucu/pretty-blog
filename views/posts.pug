@@ -12,11 +12,11 @@ block content
         // begin post
         each post in posts
           .card
-            a(href='/post/' + post.id)
+            a(href='/posts/' + post.id)
               img.img-fluid(src= post.thumbnail alt='Post Thumbnail')
             .card-block
               h2.card-title
-                a(href='/post/' + post.id)= post.title
+                a(href='/posts/' + post.id)= post.title
               h4.card-text !{post.content.substr(0,150)}...
               .metafooter
                 .wrapfooter
@@ -31,7 +31,7 @@ block content
                     //- span.dot
                     //- span.post-read 6 min read
                   span.post-read-more
-                      a(href='/post/' + post.id title='Read Story')= config.readMore
+                      a(href='/posts/' + post.id title='Read Story')= config.readMore
 
       ul.pagination.justify-content-end
         if previous

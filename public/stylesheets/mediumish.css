@@ -457,3 +457,48 @@ a.page-link{
 
 
 }
+
+
+.comment-wrapper .panel-body {
+    max-height:650px;
+    overflow:auto;
+}
+
+.comment-wrapper .media-list .media img {
+    width:64px;
+    height:64px;
+    border:2px solid #e5e7e8;
+}
+
+.comment-wrapper .media-list .media {
+    border-bottom:1px dashed #efefef;
+    margin-bottom:25px;
+}
+
+container.comment-section{
+	justify-content: center;
+	align-items: center;
+}
+		 
+.comment-section{
+}
+
+.whitebg{
+	background-color:#fff;
+	padding:40px 0 46px;
+	position:relative;
+}
+
+a {
+	text-decoration: none!important;
+	color:#2980B9
+}
+
+
+a i{
+	margin-right: 5px;
+}
+
+.inner{
+	margin:20px;
+}

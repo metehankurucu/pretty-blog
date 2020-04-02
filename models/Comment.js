@@ -9,7 +9,11 @@ module.exports = (sequelize, Sequelize) => {
 			type: Sequelize.INTEGER,
 			allowNull: false
 		},
-		username: {
+		name: {
+			type: Sequelize.STRING,
+			allowNull: false,
+		},
+		email: {
 			type: Sequelize.STRING,
 			allowNull: false,
 		},
@@ -17,13 +21,27 @@ module.exports = (sequelize, Sequelize) => {
 			type: Sequelize.TEXT,
 			allowNull: false,
 		},
-		reply: {
+		reply:{
 			type: Sequelize.TEXT,
-			allowNull: false,
+			allowNull: true,
 		},
-		replied_id: {
-			type: Sequelize.TEXT,
-			allowNull: false,
+		replied_name:{
+			type: Sequelize.INTEGER,
+			allowNull: true,
 		},
+		replied_date:{
+			type: Sequelize.DATE,
+			allowNull: true,
+		},
+		like:{
+			type: Sequelize.INTEGER,
+			allowNull: true,
+			defaultValue:0
+		},
+		dislike:{
+			type: Sequelize.INTEGER,
+			allowNull: true,
+			defaultValue:0
+		}
 	})
 };

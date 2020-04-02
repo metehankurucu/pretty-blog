@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-const { Post, sequelize, Admin, Sequelize } =  require('../helpers/database');
+const { Post, sequelize, Admin, Sequelize, Comment } =  require('../helpers/database');
 const config = require('../config');
 
 
@@ -125,7 +125,7 @@ router.get('/posts', async (req, res, next) => {
 });
 
 /** Post */
-router.get('/post/:id', async (req, res, next) => {
+router.get('/posts/:id', async (req, res, next) => {
   try {
     const { id } = req.params;
 
@@ -157,10 +157,73 @@ router.get('/post/:id', async (req, res, next) => {
       order: Sequelize.literal('rand()'),
       limit:3
     });
-    res.render('post', { post, more, config  });
+
+    const comments = await Comment.findAll({
+      where:{
+        post_id:id
+      },
+      attributes: [
+        'id',
+        'comment',
+        'name',
+        'reply',
+        'replied_name',
+        'like',
+        'dislike',
+        [sequelize.fn('date_format', sequelize.col('createdAt'), '%d.%m.%Y %H:%m'), 'createdAt']
+        // [sequelize.fn('date_format', sequelize.col('replied_date'), '%d.%m.%Y %H:%m'), 'replied_date']
+      ],
+      order:[ [ 'id', 'DESC'] ],
+    });
+    res.render('post', { post, more, config, comments, commentCount: comments.length  });
   } catch (error) {
     console.log(error);
-    res.render('post', { post:{ title:'', thumbnail:'', content:'' }, more:[], config  });
+    res.render('post', { post:{ title:'', thumbnail:'', content:'' }, more:[], config, comments: [], commentCount: 0  });
+  }
+});
+
+
+/** POST add commment */
+router.post('/comments',async (req, res, next) => {
+  try {
+    console.log(req.body);
+    const result = await Comment.create(req.body);
+    res.redirect('/posts/' + req.body.post_id + '#comments');
+  } catch (error) {
+    console.log('Error on comment[post]', error);
+    res.redirect('/');
+  }
+});
+
+/** Like Comment */
+router.get('/comments/like/:id',async (req, res, next) => {
+  try {
+    const { id } = req.params;
+
+    const comment = await Comment.findOne({ where:{ id } });
+
+    const like = await Comment.update({ like: Number(comment.like) + 1 }, { where:{ id } });
+    
+    res.redirect('/posts/' + comment.post_id + '#comments');
+  } catch (error) {
+    console.log('Error on comment[post]', error);
+    res.redirect('/');
+  }
+});
+
+/** Dislike Comment */
+router.get('/comments/dislike/:id',async (req, res, next) => {
+  try {
+    const { id } = req.params;
+
+    const comment = await Comment.findOne({ where:{ id } });
+
+    const dislike = await Comment.update({ dislike: Number(comment.dislike) + 1 }, { where:{ id } });
+    
+    res.redirect('/posts/' + comment.post_id + '#comments');
+  } catch (error) {
+    console.log('Error on dislike', error);
+    res.redirect('/');
   }
 });
 

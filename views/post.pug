@@ -5,10 +5,10 @@ block content
     .row
       // Begin Fixed Left Share
       .col-md-2.col-xs-12
-        //- .share
-          p
+        .share
+          //- p
             | Share
-          ul
+          //- ul
             li
               a(target='_blank' href='https://twitter.com/home?status=http%3A//www.wowthemes.net')
                 svg.svgIcon-use(width='29' height='29' viewbox='0 0 29 29')
@@ -22,8 +22,7 @@ block content
             | Talk
           ul
             li
-              a(href='#comments')
-                | 42
+              a(href='#comments')= commentCount
                 br
                 svg.svgIcon-use(width='29' height='29' viewbox='0 0 29 29')
                   path(d='M21.27 20.058c1.89-1.826 2.754-4.17 2.754-6.674C24.024 8.21 19.67 4 14.1 4 8.53 4 4 8.21 4 13.384c0 5.175 4.53 9.385 10.1 9.385 1.007 0 2-.14 2.95-.41.285.25.592.49.918.7 1.306.87 2.716 1.31 4.19 1.31.276-.01.494-.14.6-.36a.625.625 0 0 0-.052-.65c-.61-.84-1.042-1.71-1.282-2.58a5.417 5.417 0 0 1-.154-.75zm-3.85 1.324l-.083-.28-.388.12a9.72 9.72 0 0 1-2.85.424c-4.96 0-8.99-3.706-8.99-8.262 0-4.556 4.03-8.263 8.99-8.263 4.95 0 8.77 3.71 8.77 8.27 0 2.25-.75 4.35-2.5 5.92l-.24.21v.32c0 .07 0 .19.02.37.03.29.1.6.19.92.19.7.49 1.4.89 2.08-.93-.14-1.83-.49-2.67-1.06-.34-.22-.88-.48-1.16-.74z')
@@ -56,15 +55,14 @@ block content
   .graybg
     .container
       .row.listrecent.listrelated
-        // begin post
         each otherPost in more
           .col-md-4
             .card
-              a(href='/post/' + otherPost.id)
+              a(href='/posts/' + otherPost.id)
                 img.img-fluid.img-thumb(src=otherPost.thumbnail alt='Post Thumbnail')
               .card-block
                 h2.card-title
-                  a(href='/post/' + otherPost.id)= otherPost.title
+                  a(href='/posts/' + otherPost.id)= otherPost.title
                 .metafooter
                   .wrapfooter
                     //- span.meta-footer-thumb
@@ -78,8 +76,61 @@ block content
                       //- span.dot
                       //- span.post-read 6 min read
                     span.post-read-more
-                      a(href='/post/' + otherPost.id title='Read Story')= config.readMore
+                      a(href='/posts/' + otherPost.id title='Read Story')= config.readMore
                         //- svg.svgIcon-use(width='25' height='25' viewbox='0 0 25 25')
                           path(d='M19 6c0-1.1-.9-2-2-2H8c-1.1 0-2 .9-2 2v14.66h.012c.01.103.045.204.12.285a.5.5 0 0 0 .706.03L12.5 16.85l5.662 4.126a.508.508 0 0 0 .708-.03.5.5 0 0 0 .118-.285H19V6zm-6.838 9.97L7 19.636V6c0-.55.45-1 1-1h9c.55 0 1 .45 1 1v13.637l-5.162-3.668a.49.49 0 0 0-.676 0z' fill-rule='evenodd')
-          // end post
-          
+  .whitebg
+    .hideshare
+    hr
+    br
+    .container#comments
+      .comment-section
+        h5 Yorum Yap
+        br
+        form(action='/comments/' method='post')
+          .form-group.row
+            label.col-sm-2.col-form-label.required(for='email' ) Email: 
+            .col-sm-10
+              input#email.form-control(type='email' placeholder='email@example.com' maxlength=60 name='email'  required)
+          .form-group.row
+            label.col-sm-2.col-form-label(for='username') Name: 
+            .col-sm-10
+              input#username.form-control(type='text',required, minlength=3 name='name' maxlength=50 placeholder='Your display name')
+          textarea.form-control(placeholder='Write a comment...',minlength=3 name='comment' maxlength=400 rows='3', required)
+          input(type='hidden' name='post_id' value=post.id)
+          br
+          button.btn.btn-info.btn-block(type='submit') Save
+    .panel-body
+      hr
+      h5 Yorumlar
+      br
+      .clearfix
+      ul.media-list
+        each comment in comments
+          li.media
+            .media-body
+              span.text-muted.pull-right
+                small.text-muted= comment.createdAt
+              strong= comment.name
+              p= comment.comment
+              a(href='/comments/like/' + comment.id)
+                i.fas.fa-thumbs-up(style='')
+                = comment.like
+              | &nbsp;&nbsp;&nbsp;&nbsp;
+              a(href='/comments/dislike/' + comment.id)
+                i.fas.fa-thumbs-down(style='')
+                = comment.dislike
+          if comment.reply
+            .media-body.inner
+              span.text-muted.pull-right
+                small.text-muted= comment.createdAt
+              strong= comment.name
+              p= comment.comment
+              a(href='/comments/like/' + comment.id)
+                i.fas.fa-thumbs-up(style='')
+                = comment.like
+              | &nbsp;&nbsp;&nbsp;&nbsp;
+              a(href='/comments/dislike/' + comment.id)
+                i.fas.fa-thumbs-down(style='')
+                = comment.dislike
+          hr
